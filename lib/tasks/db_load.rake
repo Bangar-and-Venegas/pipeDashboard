@@ -1,7 +1,3 @@
-require "#{Rails.root}/app/helpers/db_load_helper"
-include DBLoadHelper
-
-
 namespace :pipedrive2db do
 	desc "TODO"
 
@@ -29,5 +25,13 @@ namespace :pipedrive2db do
 		parse (my_hash)
 	end
 
+	def parse (my_hash)
 
+		puts my_hash
+		unformatted_users= my_hash["data"]
+
+		unformatted_users.each do |user|
+			User.create(name: user['name'], identifier: user['id'])
+		end
+	end
 end
