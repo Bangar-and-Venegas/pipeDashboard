@@ -41,13 +41,6 @@ ActiveRecord::Schema.define(version: 20141023154033) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "value"
-    t.string   "currency"
-    t.string   "status"
-    t.datetime "won_time"
-    t.integer  "user_id"
-    t.datetime "add_time"
-    t.datetime "update_time"
   end
 
 end
