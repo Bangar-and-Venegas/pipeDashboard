@@ -1,9 +1,14 @@
+require "#{Rails.root}/app/helpers/db_load_helper"
+include DBLoadHelper
+
+
 namespace :pipedrive2db do
 	desc "TODO"
 
+	require 'rest_client'
+	require 'json'
+
 	task test1: :environment do
-		
-		init_require
 
 		api_base_url = "http://api.pipedrive.com/v1/"
 		api_params= "users:(id,name)"
@@ -11,32 +16,18 @@ namespace :pipedrive2db do
 
 		api_url = "#{api_base_url}#{api_params}?api_token=#{api_token}"
 		my_raw_data =RestClient.get(api_url)
+		my_hash = JSON.parse (my_raw_data)
 
-		parse (my_raw_data)
+		parse (my_hash)
 	end
 
 	task faketest1: :environment do
 
-		init_require
 		my_raw_data = '{"success":true,"data":[{"id":361107,"name":"Alan"},{"id":361103,"name":"Pooja Bangar"}],"additional_data":{"company_id":248912}}'
-
-		parse (my_raw_data)
-	end
-
-	def parse (my_raw_data)
 		my_hash = JSON.parse (my_raw_data)
 
-		puts my_hash
-		unformatted_users= my_hash["data"]
-
-		unformatted_users.each do |user|
-			User.create(name: user['name'], identifier: user['id'])
-		end
+		parse (my_hash)
 	end
 
-	def init_require
-		require 'rest_client'
-		require 'json'
-	end
 
 end
