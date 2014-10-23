@@ -3,6 +3,8 @@ namespace :pipedrive2db do
 
 	require 'rest_client'
 	require 'json'
+	require 'database_loader'
+	include DatabaseLoader
 
 	task test1: :environment do
 
@@ -12,9 +14,9 @@ namespace :pipedrive2db do
 
 		api_url = "#{api_base_url}#{api_params}?api_token=#{api_token}"
 		my_raw_data =RestClient.get(api_url)
-		my_hash = JSON.parse (my_raw_data)
+		my_hash = JSON.parse(my_raw_data)
 
-		parse (my_hash)
+		DatabaseLoader.parse(my_hash)
 	end
 
 	task faketest1: :environment do
@@ -22,16 +24,7 @@ namespace :pipedrive2db do
 		my_raw_data = '{"success":true,"data":[{"id":361107,"name":"Alan"},{"id":361103,"name":"Pooja Bangar"}],"additional_data":{"company_id":248912}}'
 		my_hash = JSON.parse (my_raw_data)
 
-		parse (my_hash)
+		DatabaseLoader.parse(my_hash)
 	end
 
-	def parse (my_hash)
-
-		puts my_hash
-		unformatted_users= my_hash["data"]
-
-		unformatted_users.each do |user|
-			User.create(name: user['name'], identifier: user['id'])
-		end
-	end
 end
