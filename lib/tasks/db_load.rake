@@ -1,30 +1,27 @@
-namespace :pipedrive2db do
-	desc "TODO"
+namespace :p2d do
+	desc "Gets data from pipedrive API and stores them in the Database"
 
-	require 'rest_client'
-	require 'json'
-	require 'database_loader'
-	include DatabaseLoader
+	require 'task_helper'
+	include TaskHelper
 
-	task test1: :environment do
-
-		api_base_url = "http://api.pipedrive.com/v1/"
-		api_params= "users:(id,name)"
-		api_token = Rails.application.secrets.pipedrive_api_key
-
-		api_url = "#{api_base_url}#{api_params}?api_token=#{api_token}"
-		my_raw_data =RestClient.get(api_url)
-		my_hash = JSON.parse(my_raw_data)
-
-		DatabaseLoader.parse(my_hash)
+	task populate_users: :environment do
+		populate_users
 	end
 
-	task faketest1: :environment do
+	task fake_populate_users: :environment do
+		fake_populate_users
+	end
 
-		my_raw_data = '{"success":true,"data":[{"id":361107,"name":"Alan"},{"id":361103,"name":"Pooja Bangar"}],"additional_data":{"company_id":248912}}'
-		my_hash = JSON.parse (my_raw_data)
+	task populate_deals: :environment do
+		populate_deals
+	end
 
-		DatabaseLoader.parse(my_hash)
+	task fake_populate_deals: :environment do
+		fake_populate_deals
+	end
+
+	task populate_activities: :environment do
+		populate_activities
 	end
 
 end
