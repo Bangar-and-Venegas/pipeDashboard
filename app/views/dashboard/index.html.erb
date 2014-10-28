@@ -1,7 +1,124 @@
-<h1>Welcome</h1>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  	<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+ 	 <script src="http://cdn.oesmith.co.uk/morris-0.5.1.min.js"></script>
+		<title>Sales Dashboard</title>
+		<link href="css/bootstrap.css" rel="stylesheet"><!-- Bootstrap -->
+		<link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+	<h1>Welcome</h1>
 
-<ul>
-	<% @users.each do |user| %>
-		<li> <%= user.id %> - <%= user.name %> </li>
-	<%end%>
-</ul>
+	<ul>
+		<% @users.each do |user| %>
+			<li> <%= user.id %> - <%= user.name %> </li>
+		<%end%>
+	</ul>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Revenue</h2>
+					<div id="revenue"> 
+					</div><!-- bar1 -->	
+			</div><!-- col-md-6 -->	
+			<div class="col-md-6">
+				<h2>Won</h2>
+					<div id="won">
+					</div>	
+			</div><!-- col-md-6 -->
+		</div><!-- row -->	
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Calls</h3>
+				<div id="calls">
+				</div>	
+			</div><!-- col-md-4 -->
+			<div class="col-md-4">
+				<h3>Conversion</h3>
+				<div id="conversion">
+				</div>	
+			</div><!-- col-md-4 -->
+			<div class="col-md-4">
+				<h3>Budget</h3>
+				<div id="budget">
+				</div>
+			</div><!-- col-md-4 -->
+		</div><!-- row -->
+	</div>	<!-- container -->
+
+	<script>
+  Morris.Bar({
+    element: 'revenue',
+    data: [
+    { y: 'Person A', a: 100, b: 90, c:120 },
+    { y: 'Person B', a: 15, b: 65, c: 140 },
+    { y: 'Person C', a: 12, b: 39, c: 130 },
+    { y: 'Person D', a: 20, b: 49, c: 150 }
+  	],
+    xkey: 'y',
+    ykeys: ['a', 'b', 'c'],
+    labels: ['Week', 'Month', 'Year']
+  	});
+  </script>
+
+  <script>
+  Morris.Donut({
+    element: 'calls',
+    data: [
+    { y: 'Person A', value: 50 },
+    { y: 'Person B', value: 20 },
+    { y: 'Person C', value: 30 },
+    { y: 'Person D', value: 40 }  
+  	],
+  	formatter: function (x) {return x + "!"} 
+  });
+  </script>
+
+  <script>
+  new Morris.Line({
+  element: 'won',
+  data: [
+    { y: '2006', a: 100, b: 90 },
+    { y: '2007', a: 75,  b: 65 },
+    { y: '2008', a: 50,  b: 40 },
+    { y: '2009', a: 75,  b: 65 },
+  ],
+  xkey: 'y',
+  ykeys: ['a', 'b'],
+  labels: ['Series A', 'Series B']
+});
+  </script>
+
+  <script>
+  new Morris.Area ({
+  	element: 'conversion',
+  	data:[
+  	{ y: '2006', a: 100, b: 90 }, 
+  	{ y: '2007', a: 75, b: 65 }, 
+  	{ y: '2008', a: 50, b: 85 }, 
+  	{ y: '2009', a: 40, b: 35}
+  ], 
+  xkey: 'y', 
+  ykeys: ['a', 'b'], 
+  
+  });
+  </script>
+
+  <script>
+  Morris.Donut({
+    element: 'budget',
+    data: [
+    { y: 'Person A', value: 100 },
+    { y: 'Person B', value: 250 },
+    { y: 'Person C', value: 350 },
+    { y: 'Person D', value: 140 }  
+  	],
+  });
+  </script>
+</body>
+</html>
