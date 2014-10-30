@@ -18,5 +18,6 @@ RSpec.describe DashboardController, type: :controller do
 		it 'creates a hash with revenue per user' do
 			expect(assigns(:revenue_per_sales_person)).not_to be_nil
 		end
+		
 	end
 end
