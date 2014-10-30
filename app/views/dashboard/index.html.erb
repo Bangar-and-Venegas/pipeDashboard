@@ -17,6 +17,10 @@
 		<% @users.each do |user| %>
 			<li> <%= user.id %> - <%= user.name %> </li>
 		<%end%>
+		<% @revenue_per_sales_person.each do |k, v| %>
+			<li> <%= k %> - <%= v %> </li>
+		<%end%>
+
 	</ul>
 
 	<div class="container">
@@ -51,20 +55,22 @@
 		</div><!-- row -->
 	</div>	<!-- container -->
 
-	<script>
+  <script>
+
   Morris.Bar({
     element: 'revenue',
     data: [
-    { y: 'Person A', a: 100, b: 90, c:120 },
-    { y: 'Person B', a: 15, b: 65, c: 140 },
-    { y: 'Person C', a: 12, b: 39, c: 130 },
-    { y: 'Person D', a: 20, b: 49, c: 150 }
+		<% @revenue_per_sales_person.each do |k, v| %>
+
+    	{ y: ' <%=k%> ', a: ' <%=v%> '},
+    <%end%>
   	],
     xkey: 'y',
-    ykeys: ['a', 'b', 'c'],
-    labels: ['Week', 'Month', 'Year']
+    ykeys: ['a'],
+    labels: ['Revenue']
   	});
   </script>
+
 
   <script>
   Morris.Donut({
