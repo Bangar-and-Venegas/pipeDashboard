@@ -1,17 +1,25 @@
 require 'rails_helper'
 require 'rake'
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.hook_into :fakeweb
+end
+
+
 describe "p2d:populate_users" do
 
   before do
     User.delete_all
     load "lib/tasks/db_load.rake"
     Rake::Task.define_task(:environment)
-    end
+  end
 
   it "loads users" do
+    VCR.use_cassette('synopsis') do
       Rake::Task["p2d:populate_users"].invoke
-    expect(User.count).to be == 2
+      expect(User.count).to be == 2
+    end
   end
 
 end

@@ -18,3 +18,6 @@
 # Ignore files for fake loading the data
 /lib/tasks/db_load_fake.rake
 /lib/fake_task_helper.rb
+
+# Ignore VCR files
+/fixtures/vcr_cassettes
