@@ -11,7 +11,7 @@ RSpec.describe Activity, type: :model do
   it { should respond_to(:id) }
   it { should respond_to(:user_id) }
   it { should respond_to(:deal_id) }
-  it { should respond_to(:type) }
+  it { should respond_to(:activity_type) }
   it { should respond_to(:done) }
   it { should respond_to(:note) }
   it { should respond_to(:due_time) }

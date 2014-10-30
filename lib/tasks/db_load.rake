@@ -8,16 +8,8 @@ namespace :p2d do
 		populate_users
 	end
 
-	task fake_populate_users: :environment do
-		fake_populate_users
-	end
-
 	task populate_deals: :environment do
 		populate_deals
-	end
-
-	task fake_populate_deals: :environment do
-		fake_populate_deals
 	end
 
 	task populate_activities: :environment do

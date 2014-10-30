@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore files for fake loading the data
+/lib/tasks/db_load_fake.rake
+/lib/fake_task_helper.rb
