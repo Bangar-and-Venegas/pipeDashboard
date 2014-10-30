@@ -16,4 +16,6 @@ namespace :p2d do
 		populate_activities
 	end
 
+	task populate: [:populate_users, :populate_deals, :populate_activities]
+
 end
