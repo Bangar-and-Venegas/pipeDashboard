@@ -30,7 +30,7 @@ module TaskHelper
 	def populate_activities
 		Activity.delete_all
 		table = "activities"
-		filters = ":(id,add_time,update_time,user_id,deal_id,type,done,note,due_time)"
+		filters = ":(id,add_time,update_time,user_id,deal_id,type,done,note,marked_as_done_time)"
 		User.all.each do |user|
 			start = 0
 			more_items_in_collection=true
