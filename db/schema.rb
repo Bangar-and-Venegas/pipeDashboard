@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141026174752) do
+ActiveRecord::Schema.define(version: 20141030154719) do
 
   create_table "activities", force: true do |t|
     t.datetime "add_time"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20141026174752) do
     t.string   "activity_type"
     t.boolean  "done"
     t.string   "note"
-    t.datetime "due_time"
+    t.datetime "marked_as_done_time"
   end
 
   create_table "deals", force: true do |t|

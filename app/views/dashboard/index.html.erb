@@ -17,8 +17,8 @@
 		<% @users.each do |user| %>
 			<li> <%= user.id %> - <%= user.name %> </li>
 		<%end%>
-		<% @revenue_per_sales_person.each do |k, v| %>
-			<li> <%= k %> - <%= v %> </li>
+		<% @activities_per_sales_person.each do |k, v| %>
+			<li> <%= k %> - <%= v[:total] %> </li>
 		<%end%>
 
 	</ul>
@@ -153,8 +153,7 @@
       element: 'revenue',
       data: [
   		<% @revenue_per_sales_person.each do |k, v| %>
-
-      	{ y: ' <%=k%> ', a: ' <%=v%> '},
+    	{ y: ' <%=k%> ', a: ' <%=v[:month]%> '},
       <%end%>
     	],
       xkey: 'y',
