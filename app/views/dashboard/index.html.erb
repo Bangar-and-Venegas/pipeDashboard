@@ -14,14 +14,8 @@
 	<h1>Welcome</h1>
 
 	<ul>
-		<% @users.each do |user| %>
-			<li> <%= user.id %> - <%= user.name %> </li>
-		<%end%>
-		<% @activities_per_person.each do |k, v| %>
-			<li> <%= k %> - <%= v[:total] %> </li>
-		<%end%>
-    <% @number_of_sales_per_person.each do |k, v| %>
-      <li> <%= k %> - <%= v[:total] %> </li>
+    <% @revenue_per_person.each do |k, v| %>
+      <li> <%= k %> - <%= v[:month] %> </li>
     <%end%>
 
 
@@ -139,10 +133,9 @@
     Morris.Bar({
     element: 'calls-day',
     data: [
-    { y: 'Person A', a: 10 },
-    { y: 'Person B', a: 15 },
-    { y: 'Person C', a: 12 },
-    { y: 'Person D', a: 20 }
+      <% @activities_per_person_per_day.each do |k, v| %>
+      { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
+      <%end%>
     ],
     xkey: 'y',
     ykeys: ['a'],
@@ -155,9 +148,9 @@
     Morris.Bar({
       element: 'revenue',
       data: [
-  		<% @revenue_per_person.each do |k, v| %>
-    	{ y: ' <%=k%> ', a: ' <%=v[:month]%> '},
-      <%end%>
+    		<% @revenue_per_person.each do |k, v| %>
+        	{ y: ' <%=k%> ', a: ' <%=v[:month]%> '},
+        <%end%>
     	],
       xkey: 'y',
       ykeys: ['a'],
@@ -168,10 +161,9 @@
       Morris.Bar({
         element: 'budget',
         data: [
-        { y: 'Person A', a: 100 },
-        { y: 'Person B', a: 250 },
-        { y: 'Person C', a: 350 },
-        { y: 'Person D', a: 140 }  
+        <% @average_revenue_per_person.each do |k, v| %>
+        { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
+        <%end%>
         ],
         xkey: 'y',
         ykeys: ['a'],
