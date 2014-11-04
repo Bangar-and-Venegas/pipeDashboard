@@ -20,6 +20,10 @@
 		<% @activities_per_person.each do |k, v| %>
 			<li> <%= k %> - <%= v[:total] %> </li>
 		<%end%>
+    <% @number_of_sales_per_person.each do |k, v| %>
+      <li> <%= k %> - <%= v[:total] %> </li>
+    <%end%>
+
 
 	</ul>
   <nav class="navbar navbar-default" role="navigation">
@@ -103,10 +107,9 @@
   Morris.Bar({
     element: 'calls-made',
     data: [
-    { y: 'Person A', a: 10 },
-    { y: 'Person B', a: 15 },
-    { y: 'Person C', a: 12 },
-    { y: 'Person D', a: 20 }
+      <% @activities_per_person.each do |k, v| %>
+      { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
+      <%end%>
     ],
     xkey: 'y',
     ykeys: ['a'],
@@ -115,14 +118,14 @@
     hideHover: 'always',
     });
   </script>
+
   <script>
      Morris.Donut({
       element: 'won',
       data: [
-        { y: 'Person A', value: 90 },
-        { y: 'Person B', value: 65 },
-        { y: 'Person C', value: 40 },
-        { y: 'Person D', value: 65 },
+        <% @number_of_sales_per_person.each do |k, v| %>
+          { y: ' <%=k%> ', value: <%=v[:month]%>},
+        <%end%>
       ],
     colors: [
       '#B21516',

@@ -16,7 +16,7 @@ describe "p2d:populate_users" do
   end
 
   it "loads users" do
-    VCR.use_cassette('synopsis') do
+    VCR.use_cassette('vcr_for_users') do
       Rake::Task["p2d:populate_users"].invoke
       expect(User.count).to be == 2
     end
