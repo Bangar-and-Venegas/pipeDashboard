@@ -17,7 +17,7 @@
 		<% @users.each do |user| %>
 			<li> <%= user.id %> - <%= user.name %> </li>
 		<%end%>
-		<% @activities_per_sales_person.each do |k, v| %>
+		<% @activities_per_person.each do |k, v| %>
 			<li> <%= k %> - <%= v[:total] %> </li>
 		<%end%>
 
@@ -60,7 +60,7 @@
   Morris.Bar({
     element: 'revenue',
     data: [
-		<% @revenue_per_sales_person.each do |k, v| %>
+		<% @revenue_per_person.each do |k, v| %>
 
     	{ y: ' <%=k%> ', a: ' <%=v[:month]%> '},
     <%end%>
