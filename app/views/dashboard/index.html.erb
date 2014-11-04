@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+-<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -22,109 +22,163 @@
 		<%end%>
 
 	</ul>
-
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+      </div><!--navbar-header -->
+      <!-- Collect content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         <ul class="nav navbar-nav navbar-center">
+          <li><a href="#">Month</a></li>
+          <li><a href="#">Quarter</a></li>
+          <li><a href="#">Year</a></li>
+        </ul><!-- /.navbar-center -->
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>  
 	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<h2>Revenue</h2>
-					<div id="revenue"> 
-					</div><!-- bar1 -->	
-			</div><!-- col-md-6 -->	
-			<div class="col-md-6">
-				<h2>Won</h2>
-					<div id="won">
-					</div>	
-			</div><!-- col-md-6 -->
-		</div><!-- row -->	
-		<div class="row">
-			<div class="col-md-4">
-				<h3>Calls</h3>
-				<div id="calls">
-				</div>	
-			</div><!-- col-md-4 -->
-			<div class="col-md-4">
-				<h3>Conversion</h3>
-				<div id="conversion">
-				</div>	
-			</div><!-- col-md-4 -->
-			<div class="col-md-4">
-				<h3>Budget</h3>
-				<div id="budget">
-				</div>
-			</div><!-- col-md-4 -->
-		</div><!-- row -->
-	</div>	<!-- container -->
+    <div class="row">
+      <div class="col-sm-4"> 
+        <h2>Number of calls made</h2>
+          <div id="calls-made"> 
+          </div>
+      </div><!-- col-sm-4 --> 
+      <div class="col-sm-4">
+        <h2>Deals Won</h2>
+          <div id="won">
+          </div>  
+      </div><!-- col-md-4 -->
+      <div class="col-sm-4"> 
+        <h2>Average calls per day</h2>
+          <div id="calls-day"> 
+          </div>
+      </div><!-- col-sm-4 --> 
+    </div><!-- row --> 
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>Revenue</h2>
+        <div id="revenue">
+        </div><!--revenue-->
+      </div><!-- col-md-4 -->
+      <div class="col-sm-4">
+        <h2>Call Conversion Rate</h2>
+        <div id="ccr">
+          <ul>
+            <li>Person A : 5.2</li>
+            <li>Person B : 6.3</li>
+            <li>Person C : 4.5</li>
+            <li>Person D : 5.5</li>
+          </ul>  
+        </div><!-- ccr --> 
+      </div><!-- col-sm-4 -->
+      <div class="col-sm-4">
+        <h3>Average Budget per Campaign</h3>
+        <div id="budget">
+        </div><!-- budget -->
+      </div><!-- col-md-4 -->
+    </div><!-- row -->
+  </div>  <!-- container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <p class="a">Person A</p>
+      </div><!-- col-sm-3 -->
+      <div class="col-sm-3">
+        <p class="b">Person B</p>
+       </div><!-- col-sm-3 -->
+      <div class="col-sm-3">
+      <p class="c">Person C</p>
+      </div><!-- col-sm-3 -->
+      <div class="col-sm-3">
+      <p class="d">Person D</p>
+      </div>
+    </div><!-- col-sm-3 -->
+  </div> <!-- container -->   
 
   <script>
-
   Morris.Bar({
-    element: 'revenue',
+    element: 'calls-made',
     data: [
-		<% @revenue_per_sales_person.each do |k, v| %>
-
-    	{ y: ' <%=k%> ', a: ' <%=v%> '},
-    <%end%>
-  	],
+    { y: 'Person A', a: 10 },
+    { y: 'Person B', a: 15 },
+    { y: 'Person C', a: 12 },
+    { y: 'Person D', a: 20 }
+    ],
     xkey: 'y',
     ykeys: ['a'],
-    labels: ['Revenue']
-  	});
+    labels: ['Average calls Per Day'],
+    barColors: ["#B21516", "#1531B2", "#1AB244", "#B29215" ],
+    hideHover: 'always',
+    });
   </script>
-
-
   <script>
-  Morris.Donut({
-    element: 'calls',
+     Morris.Donut({
+      element: 'won',
+      data: [
+        { y: 'Person A', value: 90 },
+        { y: 'Person B', value: 65 },
+        { y: 'Person C', value: 40 },
+        { y: 'Person D', value: 65 },
+      ],
+    colors: [
+      '#B21516',
+      '#1531B2',
+      '#1AB244',
+      '#F2EB27'
+    ]
+    });
+    </script>
+    <script>
+    Morris.Bar({
+    element: 'calls-day',
     data: [
-    { y: 'Person A', value: 50 },
-    { y: 'Person B', value: 20 },
-    { y: 'Person C', value: 30 },
-    { y: 'Person D', value: 40 }  
-  	],
-  	formatter: function (x) {return x + "!"} 
-  });
-  </script>
+    { y: 'Person A', a: 10 },
+    { y: 'Person B', a: 15 },
+    { y: 'Person C', a: 12 },
+    { y: 'Person D', a: 20 }
+    ],
+    xkey: 'y',
+    ykeys: ['a'],
+    labels: ['Average calls Per Day'],
+    barColors: ["#000000"],
+    hideHover: 'always'
+    });
+    </script>
+    <script>
+    Morris.Bar({
+      element: 'revenue',
+      data: [
+  		<% @revenue_per_sales_person.each do |k, v| %>
 
-  <script>
-  new Morris.Line({
-  element: 'won',
-  data: [
-    { y: '2006', a: 100, b: 90 },
-    { y: '2007', a: 75,  b: 65 },
-    { y: '2008', a: 50,  b: 40 },
-    { y: '2009', a: 75,  b: 65 },
-  ],
-  xkey: 'y',
-  ykeys: ['a', 'b'],
-  labels: ['Series A', 'Series B']
-});
-  </script>
+      	{ y: ' <%=k%> ', a: ' <%=v%> '},
+      <%end%>
+    	],
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['Revenue']
+    	});
+    </script>
+    <script>
+      Morris.Bar({
+        element: 'budget',
+        data: [
+        { y: 'Person A', a: 100 },
+        { y: 'Person B', a: 250 },
+        { y: 'Person C', a: 350 },
+        { y: 'Person D', a: 140 }  
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Budget'],
+        barColors: ["#000000"],
+        hideHover: 'always',
+      });
+      </script>
 
-  <script>
-  new Morris.Area ({
-  	element: 'conversion',
-  	data:[
-  	{ y: '2006', a: 100, b: 90 }, 
-  	{ y: '2007', a: 75, b: 65 }, 
-  	{ y: '2008', a: 50, b: 85 }, 
-  	{ y: '2009', a: 40, b: 35}
-  ], 
-  xkey: 'y', 
-  ykeys: ['a', 'b'], 
   
-  });
-  </script>
-
-  <script>
-  Morris.Donut({
-    element: 'budget',
-    data: [
-    { y: 'Person A', value: 100 },
-    { y: 'Person B', value: 250 },
-    { y: 'Person C', value: 350 },
-    { y: 'Person D', value: 140 }  
-  	],
-  });
-  </script>
 </body>
 </html>
