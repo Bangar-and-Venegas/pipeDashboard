@@ -41,6 +41,24 @@
       <div class="col-sm-4">
         <h2>Deals Won</h2>
           <div id="won">
+            <table>
+              <tr>
+                <td>Person A:</td>
+                <td>100</td>
+              </tr> 
+              <tr>
+                <td>Person B:</td>
+                <td>110</td>
+              </tr>
+              <tr>
+                <td>Person C:</td>
+                <td>150</td>
+              </tr> 
+              <tr>
+                <td>Person D:</td>
+                <td>130</td>
+              </tr>
+            </table> 
           </div>  
       </div><!-- col-md-4 -->
       <div class="col-sm-4"> 
@@ -58,12 +76,24 @@
       <div class="col-sm-4">
         <h2>Call Conversion Rate</h2>
         <div id="ccr">
-          <ul>
-            <li>Person A : 5.2</li>
-            <li>Person B : 6.3</li>
-            <li>Person C : 4.5</li>
-            <li>Person D : 5.5</li>
-          </ul>  
+          <table>
+              <tr>
+                <td>Person A:</td>
+                <td>5</td>
+              </tr> 
+              <tr>
+                <td>Person B:</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>Person C:</td>
+                <td>5</td>
+              </tr> 
+              <tr>
+                <td>Person D:</td>
+                <td>5</td>
+              </tr>
+            </table> 
         </div><!-- ccr --> 
       </div><!-- col-sm-4 -->
       <div class="col-sm-4">
@@ -106,14 +136,15 @@
     });
   </script>
 
-  <script>
-     Morris.Donut({
-      element: 'won',
-      data: [
-        <% @number_of_sales_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', value: <%=v[:month]%>},
-        <%end%>
-      ],
+ 
+    <script>
+    Morris.Donut({
+    element: 'calls-day',
+    data: [
+      <% @activities_per_person_per_day.each do |k, v| %>
+          { y: ' <%=k%> ', value:  <%=v[:month]%>}    ,
+      <%end%>
+    ],
     colors: [
       '#B21516',
       '#1531B2',
@@ -123,32 +154,19 @@
     });
     </script>
     <script>
-    Morris.Bar({
-    element: 'calls-day',
-    data: [
-      <% @activities_per_person_per_day.each do |k, v| %>
-      { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
-      <%end%>
-    ],
-    xkey: 'y',
-    ykeys: ['a'],
-    labels: ['Average calls Per Day'],
-    barColors: ["#000000"],
-    hideHover: 'always'
-    });
-    </script>
-    <script>
-    Morris.Bar({
+    Morris.Donut({
       element: 'revenue',
       data: [
     		<% @revenue_per_person.each do |k, v| %>
-        	{ y: ' <%=k%> ', a: ' <%=v[:month]%> '},
+        	{ y: ' <%=k%> ', value: <%=v[:month]%>},
         <%end%>
     	],
-      xkey: 'y',
-      ykeys: ['a'],
-      labels: ['Revenue'],
-      hideHover: 'always'
+      colors: [
+      '#B21516',
+      '#1531B2',
+      '#1AB244',
+      '#F2EB27'
+    ]
     	});
     </script>
     <script>
