@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
 		@number_of_sales_per_person = {}
 		@activities_per_person_per_day = {}
 		@average_revenue_per_person = {}
+		@call_conversion_rate_per_person = {}
 
 		@users.each do |user|
 			sales_value = {}
@@ -40,10 +41,18 @@ class DashboardController < ApplicationController
 			@activities_per_person[user.name]=activities
 
 			activities_per_day = {}
-			activities_per_day[:month_test]=user.activities_per_day(1.month.ago)
-			activities_per_day[:quarter_test]=user.activities_per_day(3.month.ago)
-			activities_per_day[:year_test]=user.activities_per_day(1.year.ago)
+			activities_per_day[:month]=user.activities_per_day(1.month.ago)
+			activities_per_day[:quarter]=user.activities_per_day(3.month.ago)
+			activities_per_day[:year]=user.activities_per_day(1.year.ago)
 			@activities_per_person_per_day[user.name]=activities_per_day
+
+			call_conversion = {}
+			call_conversion[:total]=user.call_conversion_rate
+			call_conversion[:month]=user.call_conversion_rate(1.month.ago)
+			call_conversion[:quarter]=user.call_conversion_rate(3.month.ago)
+			call_conversion[:year]=user.call_conversion_rate(1.year.ago)
+			@call_conversion_rate_per_person[user.name] = call_conversion
+
 		end
 	end
 
