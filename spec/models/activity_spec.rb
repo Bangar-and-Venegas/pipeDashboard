@@ -21,6 +21,7 @@ RSpec.describe Activity, type: :model do
   it { should respond_to(:note) }
   it { should respond_to(:marked_as_done_time) }
   it { should respond_to(:user) }
+  it { should respond_to(:deal) }
 
   describe 'when loading from API' do
     before do
@@ -30,7 +31,7 @@ RSpec.describe Activity, type: :model do
       end
     end
     it "includes the activities" do
-      expect(Activity.count).to be == 10
+      expect(Activity.count).to be == 11
     end
   end
 

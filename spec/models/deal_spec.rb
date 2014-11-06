@@ -23,7 +23,8 @@ RSpec.describe Deal, type: :model do
   it { should respond_to(:add_time) }
   it { should respond_to(:update_time) }
   it { should respond_to(:user) }
-
+  it { should respond_to(:activities) }
+  
   describe 'when loading from API' do
     before do
       VCR.use_cassette('pipedrive_deals', allow_playback_repeats: true) do
