@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
 	def call_conversion_rate(since = '01/01/1990', up_to = Time.now)
 		calls_in_won_deal = 0
 		self.deals.where(won_time: since..up_to).each do |deal|
-			puts "Para el deal #{deal.id} tenemos #{deal.activities.count}"
 			calls_in_won_deal = calls_in_won_deal + deal.activities.count
 		end
 		calls_in_won_deal *1.0 / number_of_deals(since, up_to)
