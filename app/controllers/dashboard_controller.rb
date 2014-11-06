@@ -11,38 +11,40 @@ class DashboardController < ApplicationController
 
 		@users.each do |user|
 			sales_value = {}
-			sales_value[:total]=Deal.where(user_id: user).sum(:value)
-			sales_value[:month]=Deal.where(user_id: user, won_time: 1.month.ago..Time.now).sum(:value)
-			sales_value[:quarter]=Deal.where(user_id: user, won_time: 3.month.ago..Time.now).sum(:value)
-			sales_value[:year]=Deal.where(user_id: user, won_time: 1.year.ago..Time.now).sum(:value)
+			sales_value[:total]=user.value_of_deals
+			sales_value[:month]=user.value_of_deals(1.month.ago)
+			sales_value[:quarter]=user.value_of_deals(3.month.ago)
+			sales_value[:year]=user.value_of_deals(1.year.ago)
 			@revenue_per_person[user.name]=sales_value
 
 			sales_number = {}
-			sales_number[:total]=Deal.where(user_id: user).count
-			sales_number[:month]=Deal.where(user_id: user, won_time: 1.month.ago..Time.now).count
-			sales_number[:quarter]=Deal.where(user_id: user, won_time: 3.month.ago..Time.now).count
-			sales_number[:year]=Deal.where(user_id: user, won_time: 1.year.ago..Time.now).count
+			sales_number[:total]=user.number_of_deals
+			sales_number[:month]=user.number_of_deals(1.month.ago)
+			sales_number[:quarter]=user.number_of_deals(3.month.ago)
+			sales_number[:year]=user.number_of_deals(1.year.ago)
 			@number_of_sales_per_person[user.name]=sales_number
 
 			average_revenue = {}
-			average_revenue[:total]=sales_value[:total]/sales_number[:total]
-			average_revenue[:month]=sales_value[:month]/sales_number[:total]
-			average_revenue[:quarter]=sales_value[:quarter]/sales_number[:quarter]
-			average_revenue[:year]=sales_value[:year]/sales_number[:year]
+			average_revenue[:total]=user.average_revenue
+			average_revenue[:month]=user.average_revenue(1.month.ago)
+			average_revenue[:quarter]=user.average_revenue(3.month.ago)
+			average_revenue[:year]=user.average_revenue(1.year.ago)
 			@average_revenue_per_person[user.name]=average_revenue
 
 
 			activities = {}
-			activities_per_day = {}
-			activities[:total]=Activity.where(user_id: user).count
-			activities[:month]=Activity.where(user_id: user, marked_as_done_time: 1.month.ago..Time.now).count
-			activities_per_day[:month]=activities[:month]/30.0
-			activities[:quarter]=Activity.where(user_id: user, marked_as_done_time: 3.month.ago..Time.now).count
-			activities_per_day[:quarter]=activities[:quarter]/(Time.now - 1.month.ago)
-			activities[:year]=Activity.where(user_id: user, marked_as_done_time: 1.year.ago..Time.now).count
-			activities_per_day[:year]=activities[:year]/(Time.now - 1.year.ago)
+			activities[:total]=user.number_of_activities
+			activities[:month]=user.number_of_activities(1.month.ago)
+			activities[:quarter]=user.number_of_activities(3.month.ago)
+			activities[:year]=user.number_of_activities(1.year.ago)
 			@activities_per_person[user.name]=activities
+
+			activities_per_day = {}
+			activities_per_day[:month_test]=user.activities_per_day(1.month.ago)
+			activities_per_day[:quarter_test]=user.activities_per_day(3.month.ago)
+			activities_per_day[:year_test]=user.activities_per_day(1.year.ago)
 			@activities_per_person_per_day[user.name]=activities_per_day
 		end
 	end
+
 end

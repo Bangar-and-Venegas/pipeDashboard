@@ -15,7 +15,8 @@ RSpec.describe User, type: :model do
 
 	it { should respond_to(:name) }
 	it { should respond_to(:id) }
-
+	it { should respond_to(:deals) }
+	it { should respond_to(:activities) }
 	describe 'when loading from API' do
 		before do
 			VCR.use_cassette('pipedrive_users', allow_playback_repeats: true) do

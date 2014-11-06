@@ -20,6 +20,7 @@ RSpec.describe Activity, type: :model do
   it { should respond_to(:done) }
   it { should respond_to(:note) }
   it { should respond_to(:marked_as_done_time) }
+  it { should respond_to(:user) }
 
   describe 'when loading from API' do
     before do

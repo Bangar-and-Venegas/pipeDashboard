@@ -22,6 +22,7 @@ RSpec.describe Deal, type: :model do
   it { should respond_to(:user_id) }
   it { should respond_to(:add_time) }
   it { should respond_to(:update_time) }
+  it { should respond_to(:user) }
 
   describe 'when loading from API' do
     before do
