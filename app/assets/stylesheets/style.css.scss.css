@@ -88,17 +88,21 @@ h2, h3{
 .no-gutter [class*="-3"] {
 	padding: 0;
 }
+/* 
+
 .col-sm-4{
 	border-style: solid;
 	border-color:  #000000;
 	border-width: 2px;
 }
+*/
 #calls-day{
 	margin: 1em;
 }
 
 #won{
 	margin: 2em;
+	text-align: center;
 }
 
 #calls-made{
