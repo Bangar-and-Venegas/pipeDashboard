@@ -82,7 +82,14 @@ h2, h3{
 	border-color: #000000;
 	margin: none;
 }
-
+.no-gutter [class*="-4"] {
+	padding: 0;
+}
+.col-sm-4{
+	border-style: solid;
+	border-color:  #000000;
+	border-width: 2px;
+}
 #calls-day{
 	margin: 1em;
 }
@@ -92,7 +99,7 @@ h2, h3{
 }
 
 #calls-made{
-	margin: 1em;
+	margin: 0;
 }
 #revenue{
 	margin: 2em;
