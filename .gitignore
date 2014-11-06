@@ -20,4 +20,4 @@
 /lib/fake_task_helper.rb
 
 # Ignore VCR files
-/fixtures/vcr_cassettes
+/fixtures

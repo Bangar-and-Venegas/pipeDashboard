@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+VCR.configure do |c|
+  c.cassette_library_dir = 'fixtures/vcr_cassettes'
+  c.hook_into :fakeweb
+end
+
 RSpec.describe Deal, type: :model do
 
   before do 
@@ -17,5 +22,16 @@ RSpec.describe Deal, type: :model do
   it { should respond_to(:user_id) }
   it { should respond_to(:add_time) }
   it { should respond_to(:update_time) }
+
+  describe 'when loading from API' do
+    before do
+      VCR.use_cassette('pipedrive_deals', allow_playback_repeats: true) do
+        Deal.load_from_api
+      end
+    end
+    it "includes the users" do
+      expect(Deal.count).to be == 5
+    end
+  end
 
 end

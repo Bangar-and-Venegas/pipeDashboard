@@ -1,21 +1,18 @@
 namespace :p2d do
 	desc "Gets data from pipedrive API and stores them in the Database"
 
-	require 'task_helper'
-	include TaskHelper
-
-	task populate_users: :environment do
-		populate_users
+	task users: :environment do
+		User.load_from_api
 	end
 
-	task populate_deals: :environment do
-		populate_deals
+	task deals: :environment do
+		Deal.load_from_api
 	end
-
-	task populate_activities: :environment do
-		populate_activities
+	
+	task activities: :environment do
+		Activity.load_activities_from_api
 	end
-
-	task populate: [:populate_users, :populate_deals, :populate_activities]
+	
+	task populate: [:users, :deals, :activities]
 
 end
