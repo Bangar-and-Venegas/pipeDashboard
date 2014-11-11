@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
 		load_from_api
 	end
 
+	def self.arrange_params_for_api(start=0,user_id=0)
+		input = {}
+		input[:table]="users"
+		input[:filters]=":(id,name,created,modified)"
+		input[:params]=""
+		input
+	end
+
 	def value_of_deals(since = '01/01/1990', up_to = Time.now)
 		self.deals.where(won_time: since..up_to).sum(:value)
 	end

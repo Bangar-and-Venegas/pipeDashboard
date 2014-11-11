@@ -7,49 +7,11 @@ module PipedriveApiHandler
 			input = arrange_params_for_api(start,user_id)
 			hash_response = get_hash_from_api(input)
 			load(hash_response)
-			if self.name.eql?("User")
-				more_items_in_collection = false
-			else
-				start = hash_response["additional_data"]["pagination"]["next_start"]
-				more_items_in_collection = hash_response["additional_data"]["pagination"]["more_items_in_collection"]
-			end
+			more_items_in_collection = false
+			start = hash_response.try(:[],"additional_data").try(:[],"pagination").try(:[],"next_start")
+			more_items_in_collection = hash_response.try(:[],"additional_data").try(:[],"pagination").try(:[], "more_items_in_collection")
 		end
 	end
-
-	def arrange_params_for_api(start, user_id)
-		if self.name.eql?("User")
-			arrange_user_params_for_api
-		elsif self.name.eql?("Deal")
-			arrange_deal_params_for_api(start)
-		elsif self.name.eql?("Activity")
-			arrange_activity_params_for_api(start, user_id)
-		end
-	end
-
-	def arrange_user_params_for_api
-		input = {}
-		input[:table]="users"
-		input[:filters]=":(id,name,created,modified)"
-		input[:params]=""
-		input
-	end
-
-	def arrange_deal_params_for_api(start)
-		input = {}
-		input[:table]="deals"
-		input[:filters]=":(id,user_id,title,value,currency,status,won_time,add_time,update_time)"
-		input[:params]="filter_id=2&start=#{start}&" # Only won deals
-		input
-	end
-
-	def arrange_activity_params_for_api(start,user_id)
-		input = {}
-		input[:table]="activities"
-		input[:filters]=":(id,add_time,update_time,user_id,deal_id,type,done,note,marked_as_done_time)"
-		input[:params]="user_id=#{user_id}&done=1&start=#{start}&" # Only done activities
-		input
-	end
-
 
 	def get_hash_from_api(input)
 		api_base_url = "https://api.pipedrive.com/v1/"
@@ -58,7 +20,6 @@ module PipedriveApiHandler
 		response_in_json_format =RestClient.get(api_url)
 		JSON.parse(response_in_json_format)
 	end
-
 
 	def load(hash_response)
 		unformatted_users= hash_response["data"]

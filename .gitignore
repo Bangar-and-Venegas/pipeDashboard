@@ -21,3 +21,6 @@
 
 # Ignore VCR files
 /fixtures
+
+# Ignore my notes
+NOTES
