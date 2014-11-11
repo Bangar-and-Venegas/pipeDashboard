@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>Sales Dashboard</title>
-   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">   
-		<link href="style.css.scss" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.5.1.css">
+    <link href="css/bootstrap.css" rel="stylesheet"><!-- Bootstrap -->
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href="css/style.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-   <script src="http://cdn.oesmith.co.uk/morris-0.5.1.min.js"></script>
-   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	</head>
+    <script src="http://cdn.oesmith.co.uk/morris-0.5.1.min.js"></script>
+  </head>
 	<body>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-        </button>
-      </div><!--navbar-header -->
-      <!-- Collect content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="menu">
-            <li class="toggle1">Month</li>
-            <li class="toggle2">Quarter</li>
-            <li class="toggle3">Year</li>
-           </ul> <!-- menu -->
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>  
+    <header>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+            </button>
+          </div><!--navbar-header -->
+          <!-- Collect content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="menu">
+                <li class="toggle1">Month</li>
+                <li class="toggle2">Quarter</li>
+                <li class="toggle3">Year</li>
+               </ul> <!-- menu -->
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav> <!--navbar default--> 
+   </header>
 	<div class="container">
     <div class="toggle1">
       <div class="row no-gutter">
@@ -38,7 +39,7 @@
             <h2>Number of calls made</h2>
               <div id="calls-made-month"> 
               </div>
-          </div><!-- col-sm-4 --> 
+        </div><!-- col-sm-4 --> 
         <div class="col-sm-4">
           <h2>Deals Won</h2>
             <div id="won-month">
@@ -60,7 +61,7 @@
                   <td>130</td>
                 </tr>
               </table> 
-            </div>  
+            </div><!---won-month-->  
         </div><!-- col-md-4 -->
         <div class="col-sm-4"> 
           <h2>Average calls per day</h2>
@@ -115,11 +116,11 @@
       </div><!-- col-sm-3 -->
       <div class="col-sm-3">
       <p class="d">Person D</p>
-      </div>
-    </div><!-- col-sm-3 -->
+      </div><!-- col-sm-3 -->
+    </div><!-- row no-gutter -->
   </div> <!--toggle-1-->
   <div class="toggle2">  
-        <div class="row">
+        <div class="row no-gutter">
           <div class="col-sm-4"> 
             <h2>Number of calls made</h2>
               <div id="calls-made-quarter"> 
@@ -154,7 +155,7 @@
               </div>
           </div><!-- col-sm-4 --> 
         </div><!-- row --> 
-        <div class="row">
+        <div class="row no-gutter">
           <div class="col-sm-4">
             <h2>Revenue</h2>
             <div id="revenue-quarter">
@@ -172,12 +173,12 @@
             </div><!-- ccr --> 
           </div><!-- col-sm-4 -->
           <div class="col-sm-4">
-            <h3>Average Budget per Campaign</h3>
+            <h2>Average Budget per Campaign</h2>
             <div id="budget-quarter">
             </div><!-- budget -->
           </div><!-- col-md-4 -->
         </div><!-- row -->
-        <div class="row">
+        <div class="row no-gutter">
             <div class="col-sm-3">
               <p class="a">Person A</p>
             </div><!-- col-sm-3 -->
@@ -191,9 +192,9 @@
             <p class="d">Person D</p>
             </div><!-- col-sm-3 -->
           </div><!-- row -->
-       </div><!-- toggle2--> 
-        <div class="toggle3">
-          <div class="row">
+      </div><!-- toggle2--> 
+      <div id="toggle3">
+          <div class="row no-gutter">
           <div class="col-sm-4"> 
             <h2>Number of calls made</h2>
               <div id="calls-made-year"> 
@@ -228,7 +229,7 @@
               </div>
           </div><!-- col-sm-4 --> 
         </div><!-- row --> 
-        <div class="row">
+        <div class="row no-gutter">
           <div class="col-sm-4">
             <h2>Revenue</h2>
             <div id="revenue-year">
@@ -246,12 +247,12 @@
             </div><!-- ccr --> 
           </div><!-- col-sm-4 -->
           <div class="col-sm-4">
-            <h3>Average Budget per Campaign</h3>
+            <h2>Average Budget per Campaign</h2>
             <div id="budget-year">
             </div><!-- budget -->
           </div><!-- col-md-4 -->
         </div><!-- row -->
-        <div class="row">
+        <div class="row no-gutter">
             <div class="col-sm-3">
               <p class="a">Person A</p>
             </div><!-- col-sm-3 -->
@@ -266,11 +267,11 @@
             </div><!-- col-sm-3 -->
           </div><!-- row -->
         </div><!-- toggle3-->  
-      </div> <!-- container -->   
+  </div> <!-- container -->   
 
 <!-- javascript-->
 
-<script>
+  <script>
     var menu_elements = document.querySelectorAll('.menu>li'),
       menu_length = menu_elements.length;
     for (var i = 0; i < menu_length; i++){
@@ -284,8 +285,7 @@
       });
 
     }  
-</script>  
-
+  </script>  
   <script>
   Morris.Bar({
     element: 'calls-made-month',
@@ -305,10 +305,9 @@
   Morris.Bar({
     element: 'calls-made-quarter',
     data: [
-    { y: 'Person A', a: 10 },
-    { y: 'Person B', a: 15 },
-    { y: 'Person C', a: 12 },
-    { y: 'Person D', a: 20 }
+    <% @activities_per_person.each do |k, v| %>
+      { y: ' <%=k%> ', a: ' <%=v[:quarter]%> '},
+    <%end%>
     ],
     xkey: 'y',
     ykeys: ['a'],
@@ -321,10 +320,9 @@
   Morris.Bar({
     element: 'calls-made-year',
     data: [
-    { y: 'Person A', a: 10 },
-    { y: 'Person B', a: 15 },
-    { y: 'Person C', a: 12 },
-    { y: 'Person D', a: 20 }
+    <% @activities_per_person.each do |k, v| %>
+      { y: ' <%=k%> ', a: ' <%=v[:year]%> '},
+    <%end%> 
     ],
     xkey: 'y',
     ykeys: ['a'],
@@ -401,10 +399,9 @@
     Morris.Donut({
       element: 'revenue-quarter',
       data: [
-      { y: 'Person A', value: 10 },
-      { y: 'Person B', value: 15 },
-      { y: 'Person C', value: 12 },
-      { y: 'Person D', value: 20 }
+        <% @revenue_per_person.each do |k, v| %>
+          { y: ' <%=k%> ', value: <%=v[:month]%>},
+        <%end%>
       ],
       colors: [
       '#B21516',
@@ -450,15 +447,14 @@
         Morris.Bar({
           element: 'budget-quarter',
           data: [
-          { y: 'Person A', a: 100 },
-          { y: 'Person B', a: 250 },
-          { y: 'Person C', a: 350 },
-          { y: 'Person D', a: 140 }  
+          <% @average_revenue_per_person.each do |k, v| %>
+          { y: ' <%=k%> ', a: ' <%=v[:quarter]%> '},
+          <%end%>
           ],
           xkey: 'y',
           ykeys: ['a'],
           labels: ['Budget'],
-          barColors: ["#000000"],
+          barColors: ["#B21516", "#1531B2" ],
           hideHover: 'always',
         });
       </script>
@@ -466,21 +462,23 @@
         Morris.Bar({
           element: 'budget-year',
           data: [
-          { y: 'Person A', a: 100 },
-          { y: 'Person B', a: 250 },
-          { y: 'Person C', a: 350 },
-          { y: 'Person D', a: 140 }  
+          <% @average_revenue_per_person.each do |k, v| %>
+          { y: ' <%=k%> ', a: ' <%=v[:year]%> '},
+          <%end%>
           ],
           xkey: 'y',
           ykeys: ['a'],
           labels: ['Budget'],
-          barColors: ["#000000"],
+          barColors: ["#B21516", "#1531B2" ],
           hideHover: 'always',
         });
       </script>
-</body>
-</html>
+      <script>
+      window.setInterval(yourfunction, 2000);
 
-  
-</body>
+      function yourfunction() {
+      document.getElementById("toggle3").style.display="none";
+       }
+      </script>
+  </body>
 </html>
