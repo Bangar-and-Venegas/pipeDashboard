@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
 	has_many :deals
 	has_many :activities
 
+	def self.repopulate
+		self.delete_all
+		load_from_api
+	end
+
 	def value_of_deals(since = '01/01/1990', up_to = Time.now)
 		self.deals.where(won_time: since..up_to).sum(:value)
 	end

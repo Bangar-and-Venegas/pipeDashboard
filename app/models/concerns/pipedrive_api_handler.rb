@@ -1,11 +1,10 @@
 module PipedriveApiHandler
 
-	def load_from_api
-		self.delete_all
+	def load_from_api(user_id=0)
 		start = 0
 		more_items_in_collection=true
 		while more_items_in_collection
-			input = arrange_params_for_api(start)
+			input = arrange_params_for_api(start,user_id)
 			hash_response = get_hash_from_api(input)
 			load(hash_response)
 			if self.name.eql?("User")
@@ -17,28 +16,13 @@ module PipedriveApiHandler
 		end
 	end
 
-	def load_activities_from_api
-		self.delete_all
-		User.all.each do |user|
-			start = 0
-			more_items_in_collection=true
-			while more_items_in_collection
-				input = arrange_activity_params_for_api(start,user.id)
-				hash_response = get_hash_from_api(input)
-				load(hash_response)
-				start = hash_response["additional_data"]["pagination"]["next_start"]
-				more_items_in_collection = hash_response["additional_data"]["pagination"]["more_items_in_collection"]
-			end
-		end
-	end
-
-	def arrange_params_for_api(start)
+	def arrange_params_for_api(start, user_id)
 		if self.name.eql?("User")
 			arrange_user_params_for_api
 		elsif self.name.eql?("Deal")
 			arrange_deal_params_for_api(start)
 		elsif self.name.eql?("Activity")
-			arrange_activity_params_for_api(start)
+			arrange_activity_params_for_api(start, user_id)
 		end
 	end
 

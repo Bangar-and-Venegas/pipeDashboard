@@ -7,16 +7,20 @@ end
 
 RSpec.describe User, type: :model do
 
-	before do
-		@user = User.create(name: "Some name", id: 12345)
+	describe 'user basics' do
+		before do
+			@user = User.create(name: "Some name", id: 12345)
+		end
+
+		subject { @user }
+
+		it { should respond_to(:name) }
+		it { should respond_to(:id) }
+		it { should respond_to(:deals) }
+		it { should respond_to(:activities) }
+
 	end
 
-	subject { @user }
-
-	it { should respond_to(:name) }
-	it { should respond_to(:id) }
-	it { should respond_to(:deals) }
-	it { should respond_to(:activities) }
 	describe 'when loading from API' do
 		before do
 			VCR.use_cassette('pipedrive_users', allow_playback_repeats: true) do

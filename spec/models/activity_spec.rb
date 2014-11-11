@@ -7,27 +7,31 @@ end
 
 RSpec.describe Activity, type: :model do
 
-  before do 
-    @activity = Activity.new(id: 12345) 
+  describe 'activity basics' do
+  
+    before do
+      @activity = Activity.new(id: 12345)
+    end
+
+    subject { @activity }
+
+    it { should respond_to(:id) }
+    it { should respond_to(:user_id) }
+    it { should respond_to(:deal_id) }
+    it { should respond_to(:activity_type) }
+    it { should respond_to(:done) }
+    it { should respond_to(:note) }
+    it { should respond_to(:marked_as_done_time) }
+    it { should respond_to(:user) }
+    it { should respond_to(:deal) }
+  
   end
-
-  subject { @activity }
-
-  it { should respond_to(:id) }
-  it { should respond_to(:user_id) }
-  it { should respond_to(:deal_id) }
-  it { should respond_to(:activity_type) }
-  it { should respond_to(:done) }
-  it { should respond_to(:note) }
-  it { should respond_to(:marked_as_done_time) }
-  it { should respond_to(:user) }
-  it { should respond_to(:deal) }
-
+  
   describe 'when loading from API' do
     before do
       VCR.use_cassette('pipedrive_activities', allow_playback_repeats: true) do
         User.load_from_api
-        Activity.load_activities_from_api
+        Activity.load_from_api
       end
     end
     it "includes the activities" do
