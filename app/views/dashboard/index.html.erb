@@ -289,147 +289,15 @@
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'month' } %>
-  
-  <script>
-    Morris.Bar({
-    element: 'calls-day-month',
-    data: [
-      <% @activities_per_person_per_day.each do |k, v| %>
-          { y: ' <%=k%> ', a: ' <%=v[:month]%> '}    ,
-      <%end%>
-    ],
-    xkey: 'y',
-    ykeys: ['a'],
-    labels: ['Calls per day'],
-    barColors: ["#B21516", "#1531B2" ],
-    hideHover: 'always',
-    });
-    </script>
-    <script>
-    Morris.Bar({
-      element: 'calls-day-quarter',
-      data: [
-      { y: 'Person A', a: 10 },
-      { y: 'Person B', a: 15 },
-      { y: 'Person C', a: 12 },
-      { y: 'Person D', a: 20 }
-      ],
-      xkey: 'y',
-      ykeys: ['a'],
-      labels: ['Average calls Per Day'],
-      barColors: ["#000000"],
-      hideHover: 'always'
-      });
-    </script>
-    <script>
-    Morris.Bar({
-      element: 'calls-day-year',
-      data: [
-      { y: 'Person A', a: 10 },
-      { y: 'Person B', a: 15 },
-      { y: 'Person C', a: 12 },
-      { y: 'Person D', a: 20 }
-      ],
-      xkey: 'y',
-      ykeys: ['a'],
-      labels: ['Average calls Per Day'],
-      barColors: ["#000000"],
-      hideHover: 'always'
-      });
-    </script>
-    <script>
-    Morris.Donut({
-      element: 'revenue-month',
-      data: [
-    		<% @revenue_per_person.each do |k, v| %>
-        	{ y: ' <%=k%> ', value: <%=v[:month]%>},
-        <%end%>
-    	],
-      colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
-      ]
-    	});
-    </script>
-    <script>
-    Morris.Donut({
-      element: 'revenue-quarter',
-      data: [
-        <% @revenue_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', value: <%=v[:month]%>},
-        <%end%>
-      ],
-      colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
-      ] 
-      });
-    </script>
-    <script>
-    Morris.Donut({
-      element: 'revenue-year',
-      data: [
-      { y: 'Person A', value: 10 },
-      { y: 'Person B', value: 15 },
-      { y: 'Person C', value: 12 },
-      { y: 'Person D', value: 20 }
-      ],
-      colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
-      ] 
-      });
-    </script>
-    <script>
-      Morris.Bar({
-        element: 'budget-month',
-        data: [
-        <% @average_revenue_per_person.each do |k, v| %>
-        { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
-        <%end%>
-        ],
-        xkey: 'y',
-        ykeys: ['a'],
-        labels: ['Budget'],
-        barColors: ["#B21516", "#1531B2" ],
-        hideHover: 'always',
-      });
-      </script>
-      <script>
-        Morris.Bar({
-          element: 'budget-quarter',
-          data: [
-          <% @average_revenue_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', a: ' <%=v[:quarter]%> '},
-          <%end%>
-          ],
-          xkey: 'y',
-          ykeys: ['a'],
-          labels: ['Budget'],
-          barColors: ["#B21516", "#1531B2" ],
-          hideHover: 'always',
-        });
-      </script>
-      <script>
-        Morris.Bar({
-          element: 'budget-year',
-          data: [
-          <% @average_revenue_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', a: ' <%=v[:year]%> '},
-          <%end%>
-          ],
-          xkey: 'y',
-          ykeys: ['a'],
-          labels: ['Budget'],
-          barColors: ["#B21516", "#1531B2" ],
-          hideHover: 'always',
-        });
-      </script>
+  <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/revenue', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/revenue', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/revenue', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
+    
   </body>
 </html>

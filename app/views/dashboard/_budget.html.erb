@@ -1,0 +1,15 @@
+<script>
+      Morris.Bar({
+        element: 'budget-<%=timeframe%>',
+        data: [
+        <% @average_revenue_per_person.each do |k, v| %>
+        { y: ' <%=k%> ', a: ' <%=v[timeframe.to_sym]%> '},
+        <%end%>
+        ],
+        xkey: 'y',
+        ykeys: ['a'],
+        labels: ['Budget'],
+        barColors: ["#B21516", "#1531B2" ],
+        hideHover: 'always',
+      });
+  </script>

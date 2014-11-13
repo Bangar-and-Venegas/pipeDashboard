@@ -1,0 +1,15 @@
+<script>
+    Morris.Bar({
+    element: 'calls-day-<%=timeframe%>',
+    data: [
+      <% @activities_per_person_per_day.each do |k, v| %>
+          { y: ' <%=k%> ', a: ' <%=v[timeframe.to_sym]%> '}    ,
+      <%end%>
+    ],
+    xkey: 'y',
+    ykeys: ['a'],
+    labels: ['Calls per day'],
+    barColors: ["#B21516", "#1531B2" ],
+    hideHover: 'always',
+    });
+    </script>
