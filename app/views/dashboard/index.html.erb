@@ -286,52 +286,10 @@
 
     }  
   </script>  
-  <script>
-  Morris.Bar({
-    element: 'calls-made-month',
-    data: [
-      <% @activities_per_person.each do |k, v| %>
-      { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
-      <%end%>
-    ],
-    xkey: 'y',
-    ykeys: ['a'],
-    labels: ['Calls completed'],
-    barColors: ["#B21516", "#1531B2" ],
-    hideHover: 'always',
-    });
-  </script>
-  <script>
-  Morris.Bar({
-    element: 'calls-made-quarter',
-    data: [
-    <% @activities_per_person.each do |k, v| %>
-      { y: ' <%=k%> ', a: ' <%=v[:quarter]%> '},
-    <%end%>
-    ],
-    xkey: 'y',
-    ykeys: ['a'],
-    labels: ['Calls'],
-    barColors: ["#B21516", "#1531B2", "#1AB244", "#B29215"],
-    hideHover: 'always',
-    });
-  </script>
-  <script>
-  Morris.Bar({
-    element: 'calls-made-year',
-    data: [
-    <% @activities_per_person.each do |k, v| %>
-      { y: ' <%=k%> ', a: ' <%=v[:year]%> '},
-    <%end%> 
-    ],
-    xkey: 'y',
-    ykeys: ['a'],
-    labels: ['Calls'],
-    barColors: ["#B21516", "#1531B2", "#1AB244", "#B29215"],
-    hideHover: 'always',
-    });
-  </script>
-
+  <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'month' } %>
+  
   <script>
     Morris.Bar({
     element: 'calls-day-month',
@@ -472,13 +430,6 @@
           barColors: ["#B21516", "#1531B2" ],
           hideHover: 'always',
         });
-      </script>
-      <script>
-      window.setInterval(yourfunction, 2000);
-
-      function yourfunction() {
-      document.getElementById("toggle3").style.display="none";
-       }
       </script>
   </body>
 </html>

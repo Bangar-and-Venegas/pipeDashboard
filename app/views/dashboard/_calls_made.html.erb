@@ -1,0 +1,15 @@
+<script>
+  Morris.Bar({
+    element: 'calls-made-<%=timeframe%>',
+    data: [
+    <% @activities_per_person.each do |k, v| %>
+      { y: ' <%=k%> ', a: ' <%=v[timeframe.to_sym]%> '},
+    <%end%> 
+    ],
+    xkey: 'y',
+    ykeys: ['a'],
+    labels: ['Calls'],
+    barColors: ["#B21516", "#1531B2", "#1AB244", "#B29215"],
+    hideHover: 'always',
+    });
+  </script>
