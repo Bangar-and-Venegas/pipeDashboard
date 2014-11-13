@@ -51,6 +51,7 @@
         <div class="col-sm-4">
           <h2>Deals Won</h2>
             <div id="won-month">
+              <%= render partial: 'dashboard/won', locals: {timeframe: 'month' } %>
             </div><!---won-month-->  
         </div><!-- col-md-4 -->
         <div class="col-sm-4"> 
@@ -68,24 +69,7 @@
       <div class="col-sm-4">
         <h2>Call Conversion Rate</h2>
         <div id="ccr-month">
-          <table>
-              <tr>
-                <td>Person A:</td>
-                <td>5</td>
-              </tr> 
-              <tr>
-                <td>Person B:</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Person C:</td>
-                <td>5</td>
-              </tr> 
-              <tr>
-                <td>Person D:</td>
-                <td>5</td>
-              </tr>
-            </table> 
+          <%= render partial: 'dashboard/ccr', locals: {timeframe: 'month' } %>
         </div><!-- ccr --> 
       </div><!-- col-sm-4 -->
       <div class="col-sm-4">
@@ -119,6 +103,7 @@
           <div class="col-sm-4">
             <h2>Deals Won</h2>
               <div id="won-quarter">
+                <%= render partial: 'dashboard/won', locals: {timeframe: 'quarter' } %>
               </div>  
           </div><!-- col-md-4 -->
           <div class="col-sm-4"> 
@@ -136,12 +121,7 @@
           <div class="col-sm-4">
             <h2>Call Conversion Rate</h2>
             <div id="ccr-quarter">
-              <ul>
-                <li>Person A : 5.2</li>
-                <li>Person B : 6.3</li>
-                <li>Person C : 4.5</li>
-                <li>Person D : 5.5</li>
-              </ul>  
+              <%= render partial: 'dashboard/ccr', locals: {timeframe: 'quarter' } %>
             </div><!-- ccr --> 
           </div><!-- col-sm-4 -->
           <div class="col-sm-4">
@@ -175,6 +155,7 @@
           <div class="col-sm-4">
             <h2>Deals Won</h2>
               <div id="won-year">
+                <%= render partial: 'dashboard/won', locals: {timeframe: 'year' } %>
               </div>  
           </div><!-- col-md-4 -->
           <div class="col-sm-4"> 
@@ -192,12 +173,7 @@
           <div class="col-sm-4">
             <h2>Call Conversion Rate</h2>
             <div id="ccr-year">
-              <ul>
-                <li>Person A : 5.2</li>
-                <li>Person B : 6.3</li>
-                <li>Person C : 4.5</li>
-                <li>Person D : 5.5</li>
-              </ul>  
+              <%= render partial: 'dashboard/ccr', locals: {timeframe: 'year' } %>
             </div><!-- ccr --> 
           </div><!-- col-sm-4 -->
           <div class="col-sm-4">
@@ -238,9 +214,9 @@
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
-  <%= render partial: 'dashboard/won', locals: {timeframe: 'year' } %>
-  <%= render partial: 'dashboard/won', locals: {timeframe: 'quarter' } %>
-  <%= render partial: 'dashboard/won', locals: {timeframe: 'month' } %>
+  
+  
+  
 
   </body>
 </html>

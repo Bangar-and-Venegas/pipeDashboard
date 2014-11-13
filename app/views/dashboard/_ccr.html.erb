@@ -1,6 +1,5 @@
-
-  <table id="won">
-    <% @number_of_sales_per_person.each do |k, v| %>
+<table id="ccr">
+    <% @call_conversion_rate_per_person.each do |k, v| %>
       <tr>
         <td><%=k%> :</td>
         <td> <%=v[timeframe.to_sym]%> </td>
