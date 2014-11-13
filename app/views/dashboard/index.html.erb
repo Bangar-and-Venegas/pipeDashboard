@@ -10,6 +10,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdn.oesmith.co.uk/morris-0.5.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#month").click(function(){
+          $("#toggle1").fadeOut();
+        });
+        $("#year").click(function(){
+          $("#toggle2").hide();
+        });
+      });
+    </script>
   </head>
 	<body>
     <header>
@@ -23,17 +33,15 @@
           </div><!--navbar-header -->
           <!-- Collect content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="menu">
-                <li class="toggle1">Month</li>
-                <li class="toggle2">Quarter</li>
-                <li class="toggle3">Year</li>
-               </ul> <!-- menu -->
+              <button id="month">Month</button>
+              <button id="quarter">Quarter</button>
+              <button id="year">Year</button>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav> <!--navbar default--> 
    </header>
 	<div class="container">
-    <div class="toggle1">
+    <div id="toggle1">
       <div class="row no-gutter">
         <div class="col-sm-4"> 
             <h2>Number of calls made</h2>
@@ -43,24 +51,7 @@
         <div class="col-sm-4">
           <h2>Deals Won</h2>
             <div id="won-month">
-              <table>
-                <tr>
-                  <td>Person A:</td>
-                  <td>100</td>
-                </tr> 
-                <tr>
-                  <td>Person B:</td>
-                  <td>110</td>
-                </tr>
-                <tr>
-                  <td>Person C:</td>
-                  <td>150</td>
-                </tr> 
-                <tr>
-                  <td>Person D:</td>
-                  <td>130</td>
-                </tr>
-              </table> 
+              <%= render partial: 'dashboard/won', locals: {timeframe: 'month' } %>
             </div><!---won-month-->  
         </div><!-- col-md-4 -->
         <div class="col-sm-4"> 
@@ -78,24 +69,7 @@
       <div class="col-sm-4">
         <h2>Call Conversion Rate</h2>
         <div id="ccr-month">
-          <table>
-              <tr>
-                <td>Person A:</td>
-                <td>5</td>
-              </tr> 
-              <tr>
-                <td>Person B:</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Person C:</td>
-                <td>5</td>
-              </tr> 
-              <tr>
-                <td>Person D:</td>
-                <td>5</td>
-              </tr>
-            </table> 
+          <%= render partial: 'dashboard/ccr', locals: {timeframe: 'month' } %>
         </div><!-- ccr --> 
       </div><!-- col-sm-4 -->
       <div class="col-sm-4">
@@ -119,7 +93,7 @@
       </div><!-- col-sm-3 -->
     </div><!-- row no-gutter -->
   </div> <!--toggle-1-->
-  <div class="toggle2">  
+  <div id="toggle2">  
         <div class="row no-gutter">
           <div class="col-sm-4"> 
             <h2>Number of calls made</h2>
@@ -129,24 +103,7 @@
           <div class="col-sm-4">
             <h2>Deals Won</h2>
               <div id="won-quarter">
-                <table>
-                <tr>
-                  <td>Person A:</td>
-                  <td>100</td>
-                </tr> 
-                <tr>
-                  <td>Person B:</td>
-                  <td>110</td>
-                </tr>
-                <tr>
-                  <td>Person C:</td>
-                  <td>150</td>
-                </tr> 
-                <tr>
-                  <td>Person D:</td>
-                  <td>130</td>
-                </tr>
-              </table> 
+                <%= render partial: 'dashboard/won', locals: {timeframe: 'quarter' } %>
               </div>  
           </div><!-- col-md-4 -->
           <div class="col-sm-4"> 
@@ -164,12 +121,7 @@
           <div class="col-sm-4">
             <h2>Call Conversion Rate</h2>
             <div id="ccr-quarter">
-              <ul>
-                <li>Person A : 5.2</li>
-                <li>Person B : 6.3</li>
-                <li>Person C : 4.5</li>
-                <li>Person D : 5.5</li>
-              </ul>  
+              <%= render partial: 'dashboard/ccr', locals: {timeframe: 'quarter' } %>
             </div><!-- ccr --> 
           </div><!-- col-sm-4 -->
           <div class="col-sm-4">
@@ -203,24 +155,7 @@
           <div class="col-sm-4">
             <h2>Deals Won</h2>
               <div id="won-year">
-                <table>
-                <tr>
-                  <td>Person A:</td>
-                  <td>100</td>
-                </tr> 
-                <tr>
-                  <td>Person B:</td>
-                  <td>110</td>
-                </tr>
-                <tr>
-                  <td>Person C:</td>
-                  <td>150</td>
-                </tr> 
-                <tr>
-                  <td>Person D:</td>
-                  <td>130</td>
-                </tr>
-              </table> 
+                <%= render partial: 'dashboard/won', locals: {timeframe: 'year' } %>
               </div>  
           </div><!-- col-md-4 -->
           <div class="col-sm-4"> 
@@ -238,12 +173,7 @@
           <div class="col-sm-4">
             <h2>Call Conversion Rate</h2>
             <div id="ccr-year">
-              <ul>
-                <li>Person A : 5.2</li>
-                <li>Person B : 6.3</li>
-                <li>Person C : 4.5</li>
-                <li>Person D : 5.5</li>
-              </ul>  
+              <%= render partial: 'dashboard/ccr', locals: {timeframe: 'year' } %>
             </div><!-- ccr --> 
           </div><!-- col-sm-4 -->
           <div class="col-sm-4">
@@ -271,165 +201,22 @@
 
 <!-- javascript-->
 
-  <script>
-    var menu_elements = document.querySelectorAll('.menu>li'),
-      menu_length = menu_elements.length;
-    for (var i = 0; i < menu_length; i++){
-      menu_elements[i].addEventListener('click', function (e) {
-        var target = document.querySelector(' .container>.' + e.target.classList[0]);
-        Array.prototype.filter.call(target.parentNode.children, 
-        function (siblings) {
-          siblings.style.display = 'none'; //hide sibling elements
-        });
-          target.style.display = 'block'; // show clicked element
-      });
 
-    }  
-  </script>  
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/revenue', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/revenue', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/revenue', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
   
-  <script>
-    Morris.Bar({
-    element: 'calls-day-month',
-    data: [
-      <% @activities_per_person_per_day.each do |k, v| %>
-          { y: ' <%=k%> ', a: ' <%=v[:month]%> '}    ,
-      <%end%>
-    ],
-    xkey: 'y',
-    ykeys: ['a'],
-    labels: ['Calls per day'],
-    barColors: ["#B21516", "#1531B2" ],
-    hideHover: 'always',
-    });
-    </script>
-    <script>
-    Morris.Bar({
-      element: 'calls-day-quarter',
-      data: [
-      { y: 'Person A', a: 10 },
-      { y: 'Person B', a: 15 },
-      { y: 'Person C', a: 12 },
-      { y: 'Person D', a: 20 }
-      ],
-      xkey: 'y',
-      ykeys: ['a'],
-      labels: ['Average calls Per Day'],
-      barColors: ["#000000"],
-      hideHover: 'always'
-      });
-    </script>
-    <script>
-    Morris.Bar({
-      element: 'calls-day-year',
-      data: [
-      { y: 'Person A', a: 10 },
-      { y: 'Person B', a: 15 },
-      { y: 'Person C', a: 12 },
-      { y: 'Person D', a: 20 }
-      ],
-      xkey: 'y',
-      ykeys: ['a'],
-      labels: ['Average calls Per Day'],
-      barColors: ["#000000"],
-      hideHover: 'always'
-      });
-    </script>
-    <script>
-    Morris.Donut({
-      element: 'revenue-month',
-      data: [
-    		<% @revenue_per_person.each do |k, v| %>
-        	{ y: ' <%=k%> ', value: <%=v[:month]%>},
-        <%end%>
-    	],
-      colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
-      ]
-    	});
-    </script>
-    <script>
-    Morris.Donut({
-      element: 'revenue-quarter',
-      data: [
-        <% @revenue_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', value: <%=v[:month]%>},
-        <%end%>
-      ],
-      colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
-      ] 
-      });
-    </script>
-    <script>
-    Morris.Donut({
-      element: 'revenue-year',
-      data: [
-      { y: 'Person A', value: 10 },
-      { y: 'Person B', value: 15 },
-      { y: 'Person C', value: 12 },
-      { y: 'Person D', value: 20 }
-      ],
-      colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
-      ] 
-      });
-    </script>
-    <script>
-      Morris.Bar({
-        element: 'budget-month',
-        data: [
-        <% @average_revenue_per_person.each do |k, v| %>
-        { y: ' <%=k%> ', a: ' <%=v[:month]%> '},
-        <%end%>
-        ],
-        xkey: 'y',
-        ykeys: ['a'],
-        labels: ['Budget'],
-        barColors: ["#B21516", "#1531B2" ],
-        hideHover: 'always',
-      });
-      </script>
-      <script>
-        Morris.Bar({
-          element: 'budget-quarter',
-          data: [
-          <% @average_revenue_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', a: ' <%=v[:quarter]%> '},
-          <%end%>
-          ],
-          xkey: 'y',
-          ykeys: ['a'],
-          labels: ['Budget'],
-          barColors: ["#B21516", "#1531B2" ],
-          hideHover: 'always',
-        });
-      </script>
-      <script>
-        Morris.Bar({
-          element: 'budget-year',
-          data: [
-          <% @average_revenue_per_person.each do |k, v| %>
-          { y: ' <%=k%> ', a: ' <%=v[:year]%> '},
-          <%end%>
-          ],
-          xkey: 'y',
-          ykeys: ['a'],
-          labels: ['Budget'],
-          barColors: ["#B21516", "#1531B2" ],
-          hideHover: 'always',
-        });
-      </script>
+  
+  
+
   </body>
 </html>

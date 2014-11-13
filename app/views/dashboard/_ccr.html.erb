@@ -1,0 +1,8 @@
+<table id="ccr">
+    <% @call_conversion_rate_per_person.each do |k, v| %>
+      <tr>
+        <td><%=k%> :</td>
+        <td> <%=v[timeframe.to_sym]%> </td>
+      </tr>
+    <%end%> 
+  </table> 

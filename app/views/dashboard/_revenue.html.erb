@@ -1,0 +1,16 @@
+<script>
+    Morris.Donut({
+      element: 'revenue-<%=timeframe%>',
+      data: [
+    		<% @revenue_per_person.each do |k, v| %>
+        	{ y: ' <%=k%> ', value: <%=v[timeframe.to_sym]%>},
+        <%end%>
+    	],
+      colors: [
+      '#B21516',
+      '#1531B2',
+      '#1AB244',
+      '#F2EB27'
+      ]
+    	});
+</script>
