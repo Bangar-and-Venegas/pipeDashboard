@@ -1,0 +1,7 @@
+<% @number_of_sales_per_person.each do |k, v| %>
+<table id="won">
+  <tr>
+    <td><%=k%></td>
+    <td><%=v[timeframe.to_sym]%></td>
+  </tr>
+</table> 

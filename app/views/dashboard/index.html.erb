@@ -10,6 +10,16 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdn.oesmith.co.uk/morris-0.5.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $("#month").click(function(){
+          $("#toggle1").fadeOut();
+        });
+        $("#year").click(function(){
+          $("#toggle2").hide();
+        });
+      });
+    </script>
   </head>
 	<body>
     <header>
@@ -23,17 +33,15 @@
           </div><!--navbar-header -->
           <!-- Collect content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="menu">
-                <li class="toggle1">Month</li>
-                <li class="toggle2">Quarter</li>
-                <li class="toggle3">Year</li>
-               </ul> <!-- menu -->
+              <button id="month">Month</button>
+              <button id="quarter">Quarter</button>
+              <button id="year">Year</button>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav> <!--navbar default--> 
    </header>
 	<div class="container">
-    <div class="toggle1">
+    <div id="toggle1">
       <div class="row no-gutter">
         <div class="col-sm-4"> 
             <h2>Number of calls made</h2>
@@ -43,24 +51,6 @@
         <div class="col-sm-4">
           <h2>Deals Won</h2>
             <div id="won-month">
-              <table>
-                <tr>
-                  <td>Person A:</td>
-                  <td>100</td>
-                </tr> 
-                <tr>
-                  <td>Person B:</td>
-                  <td>110</td>
-                </tr>
-                <tr>
-                  <td>Person C:</td>
-                  <td>150</td>
-                </tr> 
-                <tr>
-                  <td>Person D:</td>
-                  <td>130</td>
-                </tr>
-              </table> 
             </div><!---won-month-->  
         </div><!-- col-md-4 -->
         <div class="col-sm-4"> 
@@ -119,7 +109,7 @@
       </div><!-- col-sm-3 -->
     </div><!-- row no-gutter -->
   </div> <!--toggle-1-->
-  <div class="toggle2">  
+  <div id="toggle2">  
         <div class="row no-gutter">
           <div class="col-sm-4"> 
             <h2>Number of calls made</h2>
@@ -271,21 +261,7 @@
 
 <!-- javascript-->
 
-  <script>
-    var menu_elements = document.querySelectorAll('.menu>li'),
-      menu_length = menu_elements.length;
-    for (var i = 0; i < menu_length; i++){
-      menu_elements[i].addEventListener('click', function (e) {
-        var target = document.querySelector(' .container>.' + e.target.classList[0]);
-        Array.prototype.filter.call(target.parentNode.children, 
-        function (siblings) {
-          siblings.style.display = 'none'; //hide sibling elements
-        });
-          target.style.display = 'block'; // show clicked element
-      });
 
-    }  
-  </script>  
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'month' } %>
@@ -297,7 +273,9 @@
   <%= render partial: 'dashboard/revenue', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
-    
+
   </body>
 </html>
