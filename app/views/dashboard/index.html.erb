@@ -119,24 +119,6 @@
           <div class="col-sm-4">
             <h2>Deals Won</h2>
               <div id="won-quarter">
-                <table>
-                <tr>
-                  <td>Person A:</td>
-                  <td>100</td>
-                </tr> 
-                <tr>
-                  <td>Person B:</td>
-                  <td>110</td>
-                </tr>
-                <tr>
-                  <td>Person C:</td>
-                  <td>150</td>
-                </tr> 
-                <tr>
-                  <td>Person D:</td>
-                  <td>130</td>
-                </tr>
-              </table> 
               </div>  
           </div><!-- col-md-4 -->
           <div class="col-sm-4"> 
@@ -193,24 +175,6 @@
           <div class="col-sm-4">
             <h2>Deals Won</h2>
               <div id="won-year">
-                <table>
-                <tr>
-                  <td>Person A:</td>
-                  <td>100</td>
-                </tr> 
-                <tr>
-                  <td>Person B:</td>
-                  <td>110</td>
-                </tr>
-                <tr>
-                  <td>Person C:</td>
-                  <td>150</td>
-                </tr> 
-                <tr>
-                  <td>Person D:</td>
-                  <td>130</td>
-                </tr>
-              </table> 
               </div>  
           </div><!-- col-md-4 -->
           <div class="col-sm-4"> 
@@ -273,9 +237,10 @@
   <%= render partial: 'dashboard/revenue', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
-  <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
-  <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/won', locals: {timeframe: 'year' } %>
+  <%= render partial: 'dashboard/won', locals: {timeframe: 'quarter' } %>
+  <%= render partial: 'dashboard/won', locals: {timeframe: 'month' } %>
 
   </body>
 </html>
