@@ -8,7 +8,7 @@ Add "PIPE_KEY" to your environment variables. It should contain your Pipedrive A
 
 ## Data loading
 
-To populate data, run:
+After running migrations, to populate data run:
 
 ```
 rake p2d:populate

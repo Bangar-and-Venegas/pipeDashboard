@@ -33,6 +33,7 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'vcr'
 	gem 'fakeweb', '~> 1.3'
+	gem "factory_girl_rails", "~> 4.0"
 end
 
 group :production do
