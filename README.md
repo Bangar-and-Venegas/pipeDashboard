@@ -2,6 +2,10 @@
 
 pipeDashbard gets data from pipedrive API and displays in a dashboard.
 
+## Setup
+
+Add "PIPE_KEY" to your environment variables. It should contain your Pipedrive API Key
+
 ## Data loading
 
 To populate data, run:
@@ -17,11 +21,11 @@ This loads:
 
 It's also possible to load just users, deals or activities with:
 
-'''
+```
 rake p2d:users
 rake p2d:deals
 rake p2d:activities
-'''
+```
 
 WARNING! When loading activities, you only get those from users already in the DB.
 

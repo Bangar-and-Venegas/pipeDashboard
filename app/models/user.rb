@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 	end
 
 	def number_of_activities(since = '01/01/1990', up_to = Time.now)
-		self.activities.where(marked_as_done_time: since..up_to).count
+		self.activities.where(marked_as_done_time: since..up_to).where.not(note: '').where.not(note: nil).count
 	end
 
 	def average_revenue(since = '01/01/1990', up_to = Time.now)
