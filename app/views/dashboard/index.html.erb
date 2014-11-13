@@ -182,24 +182,13 @@
             </div><!-- budget -->
           </div><!-- col-md-4 -->
         </div><!-- row -->
-        <div class="row no-gutter">
-            <div class="col-sm-3">
-              <p class="a">Person A</p>
-            </div><!-- col-sm-3 -->
-            <div class="col-sm-3">
-              <p class="b">Person B</p>
-             </div><!-- col-sm-3 -->
-            <div class="col-sm-3">
-            <p class="c">Person C</p>
-            </div><!-- col-sm-3 -->
-            <div class="col-sm-3">
-            <p class="d">Person D</p>
-            </div><!-- col-sm-3 -->
-          </div><!-- row -->
+        <div id="name_key">
+          <%= render partial: 'dashboard/name_key' %>
+        </div><!--name_key-->  
         </div><!-- toggle3-->  
   </div> <!-- container -->   
 
-<!-- javascript-->
+
 
 
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
@@ -214,9 +203,5 @@
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
-  
-  
-  
-
   </body>
 </html>
