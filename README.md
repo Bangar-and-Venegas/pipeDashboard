@@ -10,6 +10,21 @@ To populate data, run:
 rake p2d:populate
 ```
 
+This loads:
+* All users
+* All won deals
+* All done activities
+
+It's also possible to load just users, deals or activities with:
+
+'''
+rake p2d:users
+rake p2d:deals
+rake p2d:activities
+'''
+
+WARNING! When loading activities, you only get those from users already in the DB.
+
 ## Ruby version
 
 Ruby version used: 2.0.0
