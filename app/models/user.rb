@@ -25,10 +25,13 @@ class User < ActiveRecord::Base
 	end
 
 	def number_of_activities(since = '01/01/1990', up_to = Time.now)
-		self.activities.where(marked_as_done_time: since..up_to).count
+		self.activities.where(marked_as_done_time: since..up_to).where.not(note: '').where.not(note: nil).count
 	end
 
 	def average_revenue(since = '01/01/1990', up_to = Time.now)
+		if number_of_deals(since, up_to) == 0
+			return 0.0
+		end
 		value_of_deals(since, up_to) / number_of_deals(since, up_to)
 	end
 
@@ -37,10 +40,15 @@ class User < ActiveRecord::Base
 	end
 
 	def call_conversion_rate(since = '01/01/1990', up_to = Time.now)
+		puts "Number of deals: #{number_of_deals(since, up_to)}"
+		if number_of_deals(since, up_to) == 0
+			return 0.0
+		end
 		calls_in_won_deal = 0
 		self.deals.where(won_time: since..up_to).each do |deal|
 			calls_in_won_deal = calls_in_won_deal + deal.activities.count
 		end
-		calls_in_won_deal *1.0 / number_of_deals(since, up_to)
+		puts "Calls in won deals: #{calls_in_won_deal}"
+		calls_in_won_deal.to_f / number_of_deals(since, up_to)
 	end
 end
