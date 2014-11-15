@@ -1,8 +1,8 @@
 <table id="ccr">
-    <% @call_conversion_rate_per_person.each do |k, v| %>
+    <% @users_data.each do |user| %>
       <tr>
-        <td><%=k%> :</td>
-        <td> <%=v[timeframe.to_sym]%> </td>
+        <td><%=user[:name]%> :</td>
+        <td> <%=user[:call_conversion_rate][timeframe.to_sym]%> </td>
       </tr>
     <%end%> 
   </table> 
