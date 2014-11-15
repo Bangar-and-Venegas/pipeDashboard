@@ -40,7 +40,6 @@ class User < ActiveRecord::Base
 	end
 
 	def call_conversion_rate(since = '01/01/1990', up_to = Time.now)
-		puts "Number of deals: #{number_of_deals(since, up_to)}"
 		if number_of_deals(since, up_to) == 0
 			return 0.0
 		end
@@ -48,7 +47,6 @@ class User < ActiveRecord::Base
 		self.deals.where(won_time: since..up_to).each do |deal|
 			calls_in_won_deal = calls_in_won_deal + deal.activities.count
 		end
-		puts "Calls in won deals: #{calls_in_won_deal}"
 		calls_in_won_deal.to_f / number_of_deals(since, up_to)
 	end
 end
