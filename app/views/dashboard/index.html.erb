@@ -22,173 +22,12 @@
     </script>
   </head>
 	<body>
-    <header>
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-            </button>
-          </div><!--navbar-header -->
-          <!-- Collect content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <button id="month">Month</button>
-              <button id="quarter">Quarter</button>
-              <button id="year">Year</button>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav> <!--navbar default--> 
-   </header>
+  <%= render partial: 'dashboard/header' %>
 	<div class="container">
-    <div id="toggle1">
-      <div class="row no-gutter">
-        <div class="col-sm-4"> 
-            <h2>Number of calls made</h2>
-              <div id="calls-made-month"> 
-              </div>
-        </div><!-- col-sm-4 --> 
-        <div class="col-sm-4">
-          <h2>Deals Won</h2>
-            <div id="won-month">
-              <%= render partial: 'dashboard/won', locals: {timeframe: 'month' } %>
-            </div><!---won-month-->  
-        </div><!-- col-md-4 -->
-        <div class="col-sm-4"> 
-          <h2>Average calls per day</h2>
-            <div id="calls-day-month"> 
-            </div>
-        </div><!-- col-sm-4 --> 
-      </div><!-- row --> 
-    <div class="row no-gutter">
-      <div class="col-sm-4">
-        <h2>Revenue</h2>
-        <div id="revenue-month">
-        </div><!--revenue-->
-      </div><!-- col-md-4 -->
-      <div class="col-sm-4">
-        <h2>Call Conversion Rate</h2>
-        <div id="ccr-month">
-          <%= render partial: 'dashboard/ccr', locals: {timeframe: 'month' } %>
-        </div><!-- ccr --> 
-      </div><!-- col-sm-4 -->
-      <div class="col-sm-4">
-        <h3>Average Budget per Campaign</h3>
-        <div id="budget-month">
-        </div><!-- budget -->
-      </div><!-- col-md-4 -->
-    </div><!-- row -->
-    <div class="row no-gutter">
-      <div class="col-sm-3">
-        <p class="a">Person A</p>
-      </div><!-- col-sm-3 -->
-      <div class="col-sm-3">
-        <p class="b">Person B</p>
-       </div><!-- col-sm-3 -->
-      <div class="col-sm-3">
-      <p class="c">Person C</p>
-      </div><!-- col-sm-3 -->
-      <div class="col-sm-3">
-      <p class="d">Person D</p>
-      </div><!-- col-sm-3 -->
-    </div><!-- row no-gutter -->
-  </div> <!--toggle-1-->
-  <div id="toggle2">  
-        <div class="row no-gutter">
-          <div class="col-sm-4"> 
-            <h2>Number of calls made</h2>
-              <div id="calls-made-quarter"> 
-              </div>
-          </div><!-- col-sm-4 --> 
-          <div class="col-sm-4">
-            <h2>Deals Won</h2>
-              <div id="won-quarter">
-                <%= render partial: 'dashboard/won', locals: {timeframe: 'quarter' } %>
-              </div>  
-          </div><!-- col-md-4 -->
-          <div class="col-sm-4"> 
-            <h2>Average calls per day</h2>
-              <div id="calls-day-quarter"> 
-              </div>
-          </div><!-- col-sm-4 --> 
-        </div><!-- row --> 
-        <div class="row no-gutter">
-          <div class="col-sm-4">
-            <h2>Revenue</h2>
-            <div id="revenue-quarter">
-            </div><!--revenue-->
-          </div><!-- col-md-4 -->
-          <div class="col-sm-4">
-            <h2>Call Conversion Rate</h2>
-            <div id="ccr-quarter">
-              <%= render partial: 'dashboard/ccr', locals: {timeframe: 'quarter' } %>
-            </div><!-- ccr --> 
-          </div><!-- col-sm-4 -->
-          <div class="col-sm-4">
-            <h2>Average Budget per Campaign</h2>
-            <div id="budget-quarter">
-            </div><!-- budget -->
-          </div><!-- col-md-4 -->
-        </div><!-- row -->
-        <div class="row no-gutter">
-            <div class="col-sm-3">
-              <p class="a">Person A</p>
-            </div><!-- col-sm-3 -->
-            <div class="col-sm-3">
-              <p class="b">Person B</p>
-             </div><!-- col-sm-3 -->
-            <div class="col-sm-3">
-            <p class="c">Person C</p>
-            </div><!-- col-sm-3 -->
-            <div class="col-sm-3">
-            <p class="d">Person D</p>
-            </div><!-- col-sm-3 -->
-          </div><!-- row -->
-      </div><!-- toggle2--> 
-      <div id="toggle3">
-          <div class="row no-gutter">
-          <div class="col-sm-4"> 
-            <h2>Number of calls made</h2>
-              <div id="calls-made-year"> 
-              </div>
-          </div><!-- col-sm-4 --> 
-          <div class="col-sm-4">
-            <h2>Deals Won</h2>
-              <div id="won-year">
-                <%= render partial: 'dashboard/won', locals: {timeframe: 'year' } %>
-              </div>  
-          </div><!-- col-md-4 -->
-          <div class="col-sm-4"> 
-            <h2>Average calls per day</h2>
-              <div id="calls-day-year"> 
-              </div>
-          </div><!-- col-sm-4 --> 
-        </div><!-- row --> 
-        <div class="row no-gutter">
-          <div class="col-sm-4">
-            <h2>Revenue</h2>
-            <div id="revenue-year">
-            </div><!--revenue-->
-          </div><!-- col-md-4 -->
-          <div class="col-sm-4">
-            <h2>Call Conversion Rate</h2>
-            <div id="ccr-year">
-              <%= render partial: 'dashboard/ccr', locals: {timeframe: 'year' } %>
-            </div><!-- ccr --> 
-          </div><!-- col-sm-4 -->
-          <div class="col-sm-4">
-            <h2>Average Budget per Campaign</h2>
-            <div id="budget-year">
-            </div><!-- budget -->
-          </div><!-- col-md-4 -->
-        </div><!-- row -->
-        <div id="name_key">
-          <%= render partial: 'dashboard/name_key' %>
-        </div><!--name_key-->  
-        </div><!-- toggle3-->  
+    <%= render partial: 'dashboard/panel', locals: {panel_id: '1', timeframe: 'month'} %>
+    <%= render partial: 'dashboard/panel', locals: {panel_id: '2', timeframe: 'quarter'} %>
+    <%= render partial: 'dashboard/panel', locals: {panel_id: '3', timeframe: 'year'} %>
   </div> <!-- container -->   
-
-
 
 
   <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
@@ -203,5 +42,6 @@
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
   <%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
+  <%= render partial: 'dashboard/toggler' %>
   </body>
 </html>
