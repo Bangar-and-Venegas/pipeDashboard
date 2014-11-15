@@ -2,20 +2,24 @@
   Morris.Bar({
   element: 'calls-day-<%=timeframe%>',
   data: [
-        { y: 'Calls per day',
-              <% @activities_per_person_per_day.each do |k, v| %>
-               <%=k.split(' ').first%>: ' <%=v[timeframe.to_sym]%> ' ,
+        { y: '',
+              <% @users_data.each do |user| %>
+               <%=user[:name].split(' ').first%>: ' <%=user[:activities_per_day][timeframe.to_sym]%> ' ,
     <%end%>
     }    ,
   ],
   xkey: 'y',
   ykeys: [
-  <% @activities_per_person_per_day.each do |k,v| %>
-    '<%=k.split(' ').first%>',
+  <% @users_data.each do |user| %>
+    '<%=user[:name].split(' ').first%>',
   <%end%>
   ],
-  labels: ['Calls per day'],
-  barColors: ["#B21516", "#1531B2" ],
+  labels: [''],
+  barColors: [
+    <% @users_data.each do |user| %>
+      '<%=user[:color]%>',
+    <%end%>
+  ],
   hideHover: 'always',
   });
 </script>

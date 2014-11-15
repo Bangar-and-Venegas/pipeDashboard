@@ -2,15 +2,14 @@
     Morris.Donut({
       element: 'revenue-<%=timeframe%>',
       data: [
-    		<% @revenue_per_person.each do |k, v| %>
-        	{ y: ' <%=k%> ', value: <%=v[timeframe.to_sym]%>},
+    		<% @users_data.each do |user| %>
+        	{ label: ' <%=user[:name]%> ', value: <%=user[:revenue][timeframe.to_sym]%>},
         <%end%>
     	],
       colors: [
-      '#B21516',
-      '#1531B2',
-      '#1AB244',
-      '#F2EB27'
+    <% @users_data.each do |user| %>
+      '<%=user[:color]%>',
+    <%end%>
       ]
     	});
 </script>

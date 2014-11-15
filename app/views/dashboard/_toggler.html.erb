@@ -6,15 +6,21 @@ window.setInterval(function() {
   
   if (toggle_count==0) {
     $("#toggle3").fadeOut(600)
-    $("#toggle1").delay(650).fadeIn()
+    $("#toggle1").delay(615).fadeIn()
   } else if (toggle_count==1) {
     $("#toggle1").fadeOut(600)
-    $("#toggle2").delay(650).fadeIn()
+    $("#toggle2").delay(615).fadeIn()
   } else {
     $("#toggle2").fadeOut(600)
-    $("#toggle3").delay(650).fadeIn()
+    $("#toggle3").delay(615).fadeIn()
   }
   toggle_count++;
   toggle_count = toggle_count%3;
-}, 5000);
+}, 30000);
+
+$( document ).ready(function() {
+    $("#toggle2").hide()
+    $("#toggle3").hide()
+});
+
 </script>

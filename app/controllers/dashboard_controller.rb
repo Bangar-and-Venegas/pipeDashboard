@@ -6,11 +6,15 @@ class DashboardController < ApplicationController
 		@revenue_per_person = {}
 		@activities_per_person = {}
 		@number_of_sales_per_person = {}
-		@activities_per_person_per_day = {}
 		@average_revenue_per_person = {}
 		@call_conversion_rate_per_person = {}
 
+		@users_data = []
+
+		colors = generate_colors
+
 		@users.each do |user|
+
 			sales_value = {}
 			sales_value[:total]=user.value_of_deals
 			sales_value[:month]=user.value_of_deals(1.month.ago)
@@ -44,7 +48,6 @@ class DashboardController < ApplicationController
 			activities_per_day[:month]=user.activities_per_day(1.month.ago)
 			activities_per_day[:quarter]=user.activities_per_day(3.month.ago)
 			activities_per_day[:year]=user.activities_per_day(1.year.ago)
-			@activities_per_person_per_day[user.name]=activities_per_day
 
 			call_conversion = {}
 			call_conversion[:total]=user.call_conversion_rate
@@ -53,6 +56,35 @@ class DashboardController < ApplicationController
 			call_conversion[:year]=user.call_conversion_rate(1.year.ago)
 			@call_conversion_rate_per_person[user.name] = call_conversion
 
+			user_data= {}
+			user_data[:name]=user.name
+			user_data[:revenue]=sales_value
+			user_data[:number_of_sales]=sales_number
+			user_data[:average_revenue]=average_revenue
+			user_data[:activities]=activities
+			user_data[:activities_per_day]=activities_per_day
+			user_data[:call_conversion_rate]=call_conversion
+			user_data[:color]=colors.shift
+
+			@users_data << user_data
+
 		end
+	end
+
+	private
+
+	def generate_colors
+		colors=[]
+		colors<<"#B21516"
+		colors<<"#1531B2"
+		colors<<"#1AB244"
+		colors<<"#F2EB27"
+		colors<<"#000000"
+		colors<<"#159159"
+		colors<<"#753753"
+		colors<<"#886644"
+		colors<<"#AAAAAA"
+
+		colors
 	end
 end
