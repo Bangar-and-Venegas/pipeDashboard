@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
 		if number_of_deals(since, up_to) == 0
 			return 0.0
 		end
-		value_of_deals(since, up_to) / number_of_deals(since, up_to)
+		(value_of_deals(since, up_to) / number_of_deals(since, up_to)).round(2)
 	end
 
 	def activities_per_day(since = '01/01/1990', up_to = Time.now)
@@ -47,6 +47,6 @@ class User < ActiveRecord::Base
 		self.deals.where(won_time: since..up_to).each do |deal|
 			calls_in_won_deal = calls_in_won_deal + deal.activities.count
 		end
-		calls_in_won_deal.to_f / number_of_deals(since, up_to)
+		(calls_in_won_deal.to_f / number_of_deals(since, up_to)).round(2)
 	end
 end
