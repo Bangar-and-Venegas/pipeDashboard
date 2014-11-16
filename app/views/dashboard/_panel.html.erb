@@ -1,5 +1,4 @@
 <div id="toggle<%=panel_id%>">
-  <%=timeframe%>
   <div class="row no-gutter">
     <div class="col-sm-4"> 
         <h2>Number of calls made</h2>
@@ -31,23 +30,32 @@
     </div><!-- ccr --> 
   </div><!-- col-sm-4 -->
   <div class="col-sm-4">
-    <h3>Average Budget per Campaign</h3>
+    <h2>Average Budget per Campaign</h2>
     <div id="budget-<%=timeframe%>">
     </div><!-- budget -->
   </div><!-- col-md-4 -->
 </div><!-- row -->
 <div class="row no-gutter">
-  <div class="col-sm-3">
-    <p class="a">Person A</p>
+  <div class="col-sm-2">
+    <p class="a">Francis Trapp</p>
   </div><!-- col-sm-3 -->
-  <div class="col-sm-3">
-    <p class="b">Person B</p>
+  <div class="col-sm-2">
+    <p class="b">Sylvia Matzkowiak</p>
    </div><!-- col-sm-3 -->
-  <div class="col-sm-3">
-  <p class="c">Person C</p>
+  <div class="col-sm-2">
+  <p class="c">Florian Weixelbaumer</p>
+  </div><!-- col-sm-3-->
+  <div class="col-sm-2">
+  <p class="d">Daniela Rosca</p>
   </div><!-- col-sm-3 -->
-  <div class="col-sm-3">
-  <p class="d">Person D</p>
+  <div class="col-sm-2">
+  <p class="e">Matt Adams</p>
   </div><!-- col-sm-3 -->
+  <div class="col-sm-2">
+  <p class="f">Brandnew</p>
+  </div><!-- col-sm-3 -->
+</div><!-- row no-gutter -->
+<div class="row no-gutter">
+    <%= render partial: 'dashboard/name_key' %>
 </div><!-- row no-gutter -->
 </div> <!--toggle-1-->
