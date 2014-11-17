@@ -1,8 +1,9 @@
 
 <div class="row no-gutter">
   <% @users_data.each do |k| %>
-  <div class="col-sm-2">
-    <p style="color: <%=k[:color]%>"> <%=k[:name]%> </p>
-  </div><!-- col-sm-3 -->
+  <table id="user">
+  	<tr> <p style="background-color: <%=k[:color]%> "> <%=k[:name]%> </tr>
+  </table>
   <% end %>
 </div><!-- row -->
+
