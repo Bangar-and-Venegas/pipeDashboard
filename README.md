@@ -1,14 +1,14 @@
 # README
 
-pipeDashbaord gets data from pipedrive API and displays them in a dashboard.
+pipeDashbaord collects data from pipedrive API and displays it in the dashboard.
 
 ## Setup
 
-Add "PIPE_KEY" to your environment variables. It should contain your Pipedrive API Key
+Add "PIPE_KEY" to your environment variables. It should contain your Pipedrive API Key.
 
 ## Data loading
 
-After running migrations, to populate data run:
+After running database migrations, run the following to populate data:
 
 ```
 rake p2d:populate
@@ -27,23 +27,23 @@ rake p2d:deals
 rake p2d:activities
 ```
 
-WARNING! When loading activities, you only get those from users already in the DB.
+WARNING! When loading activities, you only get those from users already in the database.
 
 ## Information displayed
 
-pipeDashboard displays the information for these time ranges:
-* Since one month ago.
-* Since three months ago.
-* Since one year ago.
+pipeDashboard displays the information for the following time ranges:
+* Since one month.
+* Since three months.
+* Since one year.
 
-The dashboard uses colors to identify the different users. The color legend is displayed on the bottom right corner of the screen.
+The dashboard uses colours to identify each user. The colour legend is displayed at the bottom right corner of the screen.
 
 The following information is displayed on the dashboard:
 
 **Number of calls made** - Number of activities that:
 * are done,
 * have some information in the *note* field, and
-* whose *type* is "call".
+* where the *type* is "call".
 
 **Average calls** - Number of calls made (see above) divided by the number of days considered.
 
@@ -58,6 +58,10 @@ The following information is displayed on the dashboard:
 **Revenue** - Value of the won deals.
 
 **Average budget** - Revenue (see above) divided by deals won (see above)
+
+## Frameworks and libraries used
+
+On the frontend side, pipeDashboard uses Bootstrap and Morris.js. Check the Gemfile to see other frameworks and libraries used.  
 
 ## Test suite
 
