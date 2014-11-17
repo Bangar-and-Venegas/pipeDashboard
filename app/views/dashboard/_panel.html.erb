@@ -1,61 +1,59 @@
 <div id="toggle<%=panel_id%>">
   <div class="row no-gutter">
-    <div class="col-sm-4"> 
+    <div class="col-sm-6"> 
         <h2>Number of calls made</h2>
           <div id="calls-made-<%=timeframe%>"> 
           </div>
     </div><!-- col-sm-4 --> 
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <h2>Deals Won</h2>
-        <div id="won-<%=timeframe%>">
-          <%= render partial: 'dashboard/won', locals: {timeframe: timeframe } %>
+        <div id="won-<%=timeframe%>">       
         </div><!---won-<%=timeframe%>-->  
     </div><!-- col-md-4 -->
-    <div class="col-sm-4"> 
-      <h2>Average calls per day</h2>
-        <div id="calls-day-<%=timeframe%>"> 
-        </div>
-    </div><!-- col-sm-4 --> 
-  </div><!-- row --> 
-<div class="row no-gutter">
-  <div class="col-sm-4">
-    <h2>Revenue</h2>
-    <div id="revenue-<%=timeframe%>">
-    </div><!--revenue-->
-  </div><!-- col-md-4 -->
-  <div class="col-sm-4">
-    <h2>Call Conversion Rate</h2>
-    <div id="ccr-<%=timeframe%>">
-      <%= render partial: 'dashboard/ccr', locals: {timeframe: timeframe } %>
-    </div><!-- ccr --> 
-  </div><!-- col-sm-4 -->
-  <div class="col-sm-4">
-    <h2>Average Budget per Campaign</h2>
-    <div id="budget-<%=timeframe%>">
-    </div><!-- budget -->
-  </div><!-- col-md-4 -->
-</div><!-- row -->
-<div class="row no-gutter">
-  <div class="col-sm-2">
-    <p class="a">Francis Trapp</p>
-  </div><!-- col-sm-3 -->
-  <div class="col-sm-2">
-    <p class="b">Sylvia Matzkowiak</p>
-   </div><!-- col-sm-3 -->
-  <div class="col-sm-2">
-  <p class="c">Florian Weixelbaumer</p>
-  </div><!-- col-sm-3-->
-  <div class="col-sm-2">
-  <p class="d">Daniela Rosca</p>
-  </div><!-- col-sm-3 -->
-  <div class="col-sm-2">
-  <p class="e">Matt Adams</p>
-  </div><!-- col-sm-3 -->
-  <div class="col-sm-2">
-  <p class="f">Brandnew</p>
-  </div><!-- col-sm-3 -->
-</div><!-- row no-gutter -->
-<div class="row no-gutter">
-    <%= render partial: 'dashboard/name_key' %>
-</div><!-- row no-gutter -->
+    </div><!-- row -->   
+    <div class="row no-gutter">
+      <div class="col-sm-3"> 
+        <h2>Average calls per day</h2>
+          <div id="calls-day-<%=timeframe%>"> 
+          </div>
+      </div><!-- col-sm-4 --> 
+    <div class="col-sm-3">
+      <h2>Call Conversion Rate</h2>
+      <div id="ccr-<%=timeframe%>">
+      </div><!-- ccr --> 
+    </div><!-- col-sm-4 -->
+    <div class="col-sm-3">
+      <h2>Revenue</h2>
+      <div id="revenue-<%=timeframe%>">
+      </div><!--revenue-->
+    </div><!-- col-md-4 -->
+    <div class="col-sm-3">
+      <h2>Average Budget per Campaign</h2>
+      <div id="budget-<%=timeframe%>">
+      </div><!-- budget -->
+    </div><!-- col-md-4 -->
+  </div><!-- row -->
+  <div class="row no-gutter">
+    <div class="col-sm-2">
+      <p class="a">Francis Trapp</p>
+    </div><!-- col-sm-3 -->
+    <div class="col-sm-2">
+      <p class="b">Sylvia Matzkowiak</p>
+     </div><!-- col-sm-3 -->
+    <div class="col-sm-2">
+    <p class="c">Florian Weixelbaumer</p>
+    </div><!-- col-sm-3-->
+    <div class="col-sm-2">
+    <p class="d">Daniela Rosca</p>
+    </div><!-- col-sm-3 -->
+    <div class="col-sm-2">
+    <p class="e">Matt Adams</p>
+    </div><!-- col-sm-3 -->
+    <div class="col-sm-2">
+    <p class="f">Brandnew</p>
+    </div><!-- col-sm-3 -->
+  </div><!-- row no-gutter -->
+  <div class="row no-gutter">
+      <%= render partial: 'dashboard/name_key' %>
+  </div><!-- row no-gutter -->
 </div> <!--toggle-1-->

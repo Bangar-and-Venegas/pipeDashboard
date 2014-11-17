@@ -1,25 +1,15 @@
 <script>
-  Morris.Bar({
-  element: 'calls-day-<%=timeframe%>',
-  data: [
-        { y: '',
-              <% @users_data.each do |user| %>
-               <%=user[:name].split(' ').first%>: ' <%=user[:activities_per_day][timeframe.to_sym]%> ' ,
-    <%end%>
-    }    ,
-  ],
-  xkey: 'y',
-  ykeys: [
-  <% @users_data.each do |user| %>
-    '<%=user[:name].split(' ').first%>',
-  <%end%>
-  ],
-  labels: [''],
-  barColors: [
+    Morris.Donut({
+      element: 'calls-day-<%=timeframe%>',
+      data: [
+        <% @users_data.each do |user| %>
+          { label: ' <%=user[:name]%> ', value: <%=user[:activities_per_day][timeframe.to_sym]%>},
+        <%end%>
+      ],
+      colors: [
     <% @users_data.each do |user| %>
       '<%=user[:color]%>',
     <%end%>
-  ],
-  hideHover: 'always',
-  });
+      ]
+      });
 </script>

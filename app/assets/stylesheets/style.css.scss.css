@@ -99,7 +99,7 @@ a {
 	margin: none;
 	padding: none;
 }
-.no-gutter [class*="-4"] {
+.no-gutter [class*="-6"] {
 	padding: 0;
 }
 .no-gutter [class*="-3"] {
@@ -110,12 +110,11 @@ a {
 }
 .no-gutter [class*="-2"] {
 	padding: 0;
-	position: inline-block;
+	font-weight: bold;
 }
 #calls-day {
-	width: 100%;
-	height: 100%;
-	padding: 1em;
+	position: relative;
+	height: 80%;
 }
 #won, #ccr {
 	width: 80%;
@@ -136,7 +135,7 @@ a {
 }
 table {
 	margin: 1em;
-	font-size: 1.2em;
+	font-size: 0.8em;
 }
 td {
 	text-align: left;

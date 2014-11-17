@@ -1,8 +1,15 @@
-<table id="ccr">
+<script>
+    Morris.Donut({
+      element: 'ccr-<%=timeframe%>',
+      data: [
+        <% @users_data.each do |user| %>
+          { label: ' <%=user[:name]%> ', value: <%=user[:call_conversion_rate][timeframe.to_sym]%>},
+        <%end%>
+      ],
+      colors: [
     <% @users_data.each do |user| %>
-      <tr>
-        <td><%=user[:name]%> :</td>
-        <td> <%=user[:call_conversion_rate][timeframe.to_sym]%> </td>
-      </tr>
-    <%end%> 
-  </table> 
+      '<%=user[:color]%>',
+    <%end%>
+      ]
+      });
+</script>
