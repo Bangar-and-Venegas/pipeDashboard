@@ -1,6 +1,6 @@
 # README
 
-pipeDashbard gets data from pipedrive API and displays in a dashboard.
+pipeDashbaord gets data from pipedrive API and displays them in a dashboard.
 
 ## Setup
 
@@ -28,6 +28,41 @@ rake p2d:activities
 ```
 
 WARNING! When loading activities, you only get those from users already in the DB.
+
+## Information displayed
+
+pipeDashboard displays the information for these time ranges:
+* Since one month ago.
+* Since three months ago.
+* Since one year ago.
+
+The following information is displayed on the dashboard:
+
+**Number of calls made**
+Number of activities that:
+* are done,
+* have some information in the *note* field, and
+* whose *type* is "call".
+
+**Average calls**
+Number of calls made (see above) divided by the number of days considered.
+
+**Call conversion**
+Number of calls made (see above) belonging to a won deal, divided by the number of won deals.
+
+**Activities**
+Number of activities that:
+* are done, and
+* have some information in the *note* field.
+
+**Deals won**
+Number of won deals.
+
+**Revenue**
+Value of the won deals.
+
+**Average budget**
+Revenue (see above) divided by deals won (see above)
 
 ## Ruby version
 
