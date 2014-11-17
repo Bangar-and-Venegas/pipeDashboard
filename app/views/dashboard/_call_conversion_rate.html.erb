@@ -1,15 +1,25 @@
 <script>
-    Morris.Donut({
-      element: 'call-conversion-rate-<%=timeframe%>',
-      data: [
-        <% @users_data.each do |user| %>
-          { label: ' <%=user[:name]%> ', value: <%=user[:call_conversion_rate][timeframe.to_sym]%>},
-        <%end%>
-      ],
-      colors: [
+  Morris.Bar({
+  element: 'call-conversion-rate-<%=timeframe%>',
+  data: [
+        { y: '',
+              <% @users_data.each do |user| %>
+               <%=user[:name].split(' ').first%>: ' <%=user[:call_conversion_rate][timeframe.to_sym]%> ' ,
+    <%end%>
+    }    ,
+  ],
+  xkey: 'y',
+  ykeys: [
+  <% @users_data.each do |user| %>
+    '<%=user[:name].split(' ').first%>',
+  <%end%>
+  ],
+  labels: [''],
+  barColors: [
     <% @users_data.each do |user| %>
       '<%=user[:color]%>',
     <%end%>
-      ]
-      });
+  ],
+  hideHover: 'always',
+  });
 </script>

@@ -1,16 +1,25 @@
 <script>
-    Morris.Donut({
-      element: 'deals-won-<%=timeframe%>',
-      data: [
-    		<% @users_data.each do |user| %>
-        	{ label: ' <%=user[:name]%> ', value: <%=user[:number_of_sales][timeframe.to_sym]%>},
-        <%end%>
-    	],
-      colors: [
+  Morris.Bar({
+  element: 'deals-won-<%=timeframe%>',
+  data: [
+        { y: '',
+              <% @users_data.each do |user| %>
+               <%=user[:name].split(' ').first%>: ' <%=user[:number_of_sales][timeframe.to_sym]%> ' ,
+    <%end%>
+    }    ,
+  ],
+  xkey: 'y',
+  ykeys: [
+  <% @users_data.each do |user| %>
+    '<%=user[:name].split(' ').first%>',
+  <%end%>
+  ],
+  labels: [''],
+  barColors: [
     <% @users_data.each do |user| %>
       '<%=user[:color]%>',
     <%end%>
-      ]
-    	});
+  ],
+  hideHover: 'always',
+  });
 </script>
-
