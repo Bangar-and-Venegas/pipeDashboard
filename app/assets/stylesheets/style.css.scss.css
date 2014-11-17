@@ -135,15 +135,18 @@ a {
 }
 table {
 	margin: 0;
-	font-size: 0.8em;
+	font-size: 0.5em;
+	color: #FFF;
 }
-td {
-	text-align: left;
+tr {
+	margin: 0px;
+	color: #FFF;
 }
 p {
 	margin-top: 1em;
 	padding: 0.5em;
-	font-weight: bold;
+	color: #FFF;
+	font-size: 0.8em;
 }
 .a, .b, .c, .d, .e, .f {
 		font-size: 0.8em;
