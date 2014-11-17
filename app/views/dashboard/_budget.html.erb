@@ -1,15 +1,25 @@
 <script>
-    Morris.Donut({
-      element: 'budget-<%=timeframe%>',
-      data: [
-        <% @users_data.each do |user| %>
-          { label: ' <%=user[:name]%> ', value: <%=user[:average_revenue][timeframe.to_sym]%>},
-        <%end%>
-      ],
-      colors: [
+  Morris.Bar({
+  element: 'budget-<%=timeframe%>',
+  data: [
+        { y: '',
+              <% @users_data.each do |user| %>
+               <%=user[:name].split(' ').first%>: ' <%=user[:average_revenue][timeframe.to_sym]%> ' ,
+    <%end%>
+    }    ,
+  ],
+  xkey: 'y',
+  ykeys: [
+  <% @users_data.each do |user| %>
+    '<%=user[:name].split(' ').first%>',
+  <%end%>
+  ],
+  labels: [''],
+  barColors: [
     <% @users_data.each do |user| %>
       '<%=user[:color]%>',
     <%end%>
-      ]
-      });
-</script
+  ],
+  hideHover: 'always',
+  });
+</script>

@@ -3,7 +3,7 @@
       element: 'calls-day-<%=timeframe%>',
       data: [
         <% @users_data.each do |user| %>
-          { label: ' <%=user[:name]%> ', value: <%=user[:activities_per_day][timeframe.to_sym]%>},
+          { label: ' <%=user[:name]%> ', value: <%=user[:calls_per_day][timeframe.to_sym]%>},
         <%end%>
       ],
       colors: [

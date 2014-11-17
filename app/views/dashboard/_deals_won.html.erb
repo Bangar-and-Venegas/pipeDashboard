@@ -1,6 +1,6 @@
 <script>
     Morris.Donut({
-      element: 'number_of_sales-<%=timeframe%>',
+      element: 'deals-won-<%=timeframe%>',
       data: [
     		<% @users_data.each do |user| %>
         	{ label: ' <%=user[:name]%> ', value: <%=user[:number_of_sales][timeframe.to_sym]%>},

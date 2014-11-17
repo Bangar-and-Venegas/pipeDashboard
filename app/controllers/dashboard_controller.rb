@@ -33,10 +33,16 @@ class DashboardController < ApplicationController
 			activities[:quarter]=user.number_of_activities(3.month.ago)
 			activities[:year]=user.number_of_activities(1.year.ago)
 
-			activities_per_day = {}
-			activities_per_day[:month]=user.activities_per_day(1.month.ago)
-			activities_per_day[:quarter]=user.activities_per_day(3.month.ago)
-			activities_per_day[:year]=user.activities_per_day(1.year.ago)
+			calls = {}
+			calls[:total]=user.number_of_calls
+			calls[:month]=user.number_of_calls(1.month.ago)
+			calls[:quarter]=user.number_of_calls(3.month.ago)
+			calls[:year]=user.number_of_calls(1.year.ago)
+
+			calls_per_day = {}
+			calls_per_day[:month]=user.calls_per_day(1.month.ago)
+			calls_per_day[:quarter]=user.calls_per_day(3.month.ago)
+			calls_per_day[:year]=user.calls_per_day(1.year.ago)
 
 			call_conversion = {}
 			call_conversion[:total]=user.call_conversion_rate
@@ -50,7 +56,8 @@ class DashboardController < ApplicationController
 			user_data[:number_of_sales]=sales_number
 			user_data[:average_revenue]=average_revenue
 			user_data[:activities]=activities
-			user_data[:activities_per_day]=activities_per_day
+			user_data[:calls]=calls
+			user_data[:calls_per_day]=calls_per_day
 			user_data[:call_conversion_rate]=call_conversion
 			user_data[:color]=colors.shift
 

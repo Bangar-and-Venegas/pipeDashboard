@@ -1,6 +1,6 @@
 <script>
     Morris.Donut({
-      element: 'ccr-<%=timeframe%>',
+      element: 'call-conversion-rate-<%=timeframe%>',
       data: [
         <% @users_data.each do |user| %>
           { label: ' <%=user[:name]%> ', value: <%=user[:call_conversion_rate][timeframe.to_sym]%>},

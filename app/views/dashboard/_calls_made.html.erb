@@ -4,7 +4,7 @@
   data: [
         { y: '',
               <% @users_data.each do |user| %>
-               <%=user[:name].split(' ').first%>: ' <%=user[:activities][timeframe.to_sym]%> ' ,
+               <%=user[:name].split(' ').first%>: ' <%=user[:calls][timeframe.to_sym]%> ' ,
     <%end%>
     }    ,
   ],

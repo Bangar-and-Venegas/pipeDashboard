@@ -12,20 +12,28 @@
 </div> <!-- container -->   
 
 
+
+
+<%= render partial: 'dashboard/activities_made', locals: {timeframe: 'year' } %>
+<%= render partial: 'dashboard/activities_made', locals: {timeframe: 'quarter' } %>
+<%= render partial: 'dashboard/activities_made', locals: {timeframe: 'month' } %>
 <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'year' } %>
 <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'quarter' } %>
 <%= render partial: 'dashboard/calls_made', locals: {timeframe: 'month' } %>
-<%= render partial: 'dashboard/won', locals: {timeframe: 'year' } %>
-<%= render partial: 'dashboard/won', locals: {timeframe: 'quarter' } %>
-<%= render partial: 'dashboard/won', locals: {timeframe: 'month' } %>
+<%= render partial: 'dashboard/deals_won', locals: {timeframe: 'year' } %>
+<%= render partial: 'dashboard/deals_won', locals: {timeframe: 'quarter' } %>
+<%= render partial: 'dashboard/deals_won', locals: {timeframe: 'month' } %>
 <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'year' } %>
 <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'quarter' } %>
 <%= render partial: 'dashboard/calls_day', locals: {timeframe: 'month' } %>
 <%= render partial: 'dashboard/revenue', locals: {timeframe: 'year' } %>
 <%= render partial: 'dashboard/revenue', locals: {timeframe: 'month' } %>
 <%= render partial: 'dashboard/revenue', locals: {timeframe: 'quarter' } %>
-<%= render partial: 'dashboard/ccr', locals: {timeframe: 'year' } %>
-<%= render partial: 'dashboard/ccr', locals: {timeframe: 'quarter' } %>
-<%= render partial: 'dashboard/ccr', locals: {timeframe: 'month' } %>
-<%= render partial: 'dashboard/toggler' %>
+<%= render partial: 'dashboard/call_conversion_rate', locals: {timeframe: 'year' } %>
+<%= render partial: 'dashboard/call_conversion_rate', locals: {timeframe: 'quarter' } %>
+<%= render partial: 'dashboard/call_conversion_rate', locals: {timeframe: 'month' } %>
+<%= render partial: 'dashboard/budget', locals: {timeframe: 'year' } %>
+<%= render partial: 'dashboard/budget', locals: {timeframe: 'quarter' } %>
+<%= render partial: 'dashboard/budget', locals: {timeframe: 'month' } %>
 
+<%= render partial: 'dashboard/toggler' %>
