@@ -28,12 +28,12 @@ gem 'jbuilder', '~> 1.2'
 gem 'rest-client'
 
 group :development, :test do
-	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
-	gem 'rspec-rails'
-	gem 'vcr'
-	gem 'fakeweb', '~> 1.3'
-	gem "factory_girl_rails", "~> 4.0"
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'vcr'
+  gem 'fakeweb', '~> 1.3'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :production do

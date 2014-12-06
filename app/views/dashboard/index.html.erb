@@ -1,10 +1,3 @@
-<!-- USE THIS CODE AS AN EXAMPLE ON HOW TO GET THE NAMES AND THE COLORS <ul>
-  <% @users_data.each do |k| %>
-    <li><p style="color: <%=k[:color]%>"> <%=k[:name]%> </p>
-  <%end%>
-</ul>
--->
-
 <div class="container">
   <%= render partial: 'dashboard/panel', locals: {panel_id: '1', timeframe: 'month'} %>
   <%= render partial: 'dashboard/panel', locals: {panel_id: '2', timeframe: 'quarter'} %>
